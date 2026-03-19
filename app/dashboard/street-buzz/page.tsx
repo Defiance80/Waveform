@@ -33,49 +33,58 @@ const HeatMap = () => {
           </div>
 
           {/* City Dots - positioned over approximate US map locations */}
-          {/* Atlanta ~ 75%, 72% */}
+          {/* LA ~ 12%, 62% — HOTTEST */}
           <div 
             className="absolute w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#FF4444] animate-pulse shadow-[0_0_20px_#FF4444]"
+            style={{ top: '62%', left: '12%' }}
+          >
+            <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-white font-medium whitespace-nowrap">LA</div>
+            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-[#FF4444] whitespace-nowrap">97°</div>
+          </div>
+
+          {/* Long Beach ~ 14%, 66% */}
+          <div 
+            className="absolute w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FFB800] animate-pulse shadow-[0_0_15px_#FFB800]"
+            style={{ top: '66%', left: '14%' }}
+          >
+            <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-white font-medium whitespace-nowrap">LBC</div>
+            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-[#FFB800] whitespace-nowrap">82°</div>
+          </div>
+
+          {/* Sacramento ~ 12%, 45% */}
+          <div 
+            className="absolute w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#FFB800] animate-pulse shadow-[0_0_15px_#FFB800]"
+            style={{ top: '45%', left: '12%' }}
+          >
+            <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-white font-medium whitespace-nowrap">SAC</div>
+            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-[#FFB800] whitespace-nowrap">76°</div>
+          </div>
+
+          {/* Atlanta ~ 75%, 72% */}
+          <div 
+            className="absolute w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FFB800] animate-pulse shadow-[0_0_15px_#FFB800]"
             style={{ top: '72%', left: '75%' }}
           >
             <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-white font-medium whitespace-nowrap">ATL</div>
-            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-[#FF4444] whitespace-nowrap">94°</div>
-          </div>
-
-          {/* Houston ~ 52%, 78% */}
-          <div 
-            className="absolute w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FFB800] animate-pulse shadow-[0_0_15px_#FFB800]"
-            style={{ top: '78%', left: '52%' }}
-          >
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-white font-medium whitespace-nowrap">HTX</div>
-            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-[#FFB800] whitespace-nowrap">78°</div>
-          </div>
-
-          {/* Chicago ~ 65%, 35% */}
-          <div 
-            className="absolute w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#00FF9C] animate-pulse shadow-[0_0_15px_#00FF9C]"
-            style={{ top: '35%', left: '65%' }}
-          >
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-white font-medium whitespace-nowrap">CHI</div>
-            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-[#00FF9C] whitespace-nowrap">67°</div>
+            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-[#FFB800] whitespace-nowrap">74°</div>
           </div>
 
           {/* NYC ~ 85%, 28% */}
           <div 
-            className="absolute w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FFB800] animate-pulse shadow-[0_0_15px_#FFB800]"
+            className="absolute w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#00FF9C] animate-pulse shadow-[0_0_15px_#00FF9C]"
             style={{ top: '28%', left: '85%' }}
           >
             <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-white font-medium whitespace-nowrap">NYC</div>
-            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-[#FFB800] whitespace-nowrap">72°</div>
+            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-[#00FF9C] whitespace-nowrap">65°</div>
           </div>
 
-          {/* LA ~ 12%, 62% */}
+          {/* Chicago ~ 65%, 35% */}
           <div 
             className="absolute w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#00C2FF] opacity-60"
-            style={{ top: '62%', left: '12%' }}
+            style={{ top: '35%', left: '65%' }}
           >
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-white font-medium whitespace-nowrap">LA</div>
-            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-[#00C2FF] whitespace-nowrap">45°</div>
+            <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-white font-medium whitespace-nowrap">CHI</div>
+            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs text-[#00C2FF] whitespace-nowrap">48°</div>
           </div>
 
           {/* Heat Legend */}
@@ -174,11 +183,11 @@ const CityCard = ({ city }: { city: any }) => {
 
 const BuzzTimeline = () => {
   const timelineData = [
-    { time: '6h ago', city: 'Atlanta', event: 'Radio mention on V-103', impact: 'High' },
-    { time: '12h ago', city: 'Houston', event: 'Playlist add on local station', impact: 'Medium' },
-    { time: '18h ago', city: 'Chicago', event: 'Social media buzz surge', impact: 'Medium' },
+    { time: '6h ago', city: 'Los Angeles', event: 'Radio mention on Real 92.3', impact: 'High' },
+    { time: '12h ago', city: 'Long Beach', event: 'Playlist add on local station', impact: 'Medium' },
+    { time: '18h ago', city: 'Sacramento', event: 'Social media buzz surge', impact: 'Medium' },
     { time: '1d ago', city: 'NYC', event: 'Blog feature published', impact: 'High' },
-    { time: '2d ago', city: 'Atlanta', event: 'Viral TikTok reaction', impact: 'High' },
+    { time: '2d ago', city: 'Los Angeles', event: 'Viral TikTok reaction', impact: 'High' },
   ];
 
   return (
@@ -262,7 +271,7 @@ export default function StreetBuzzPage() {
             </div>
             <div className="text-2xl font-bold text-white mb-1">77</div>
             <div className="text-sm text-[#A0A0A0]">Radio Spins</div>
-            <div className="text-xs text-[#FF4444] mt-1">Peak in Atlanta</div>
+            <div className="text-xs text-[#FF4444] mt-1">Peak in Los Angeles</div>
           </div>
 
           <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-4">
@@ -309,21 +318,21 @@ export default function StreetBuzzPage() {
             <div className="space-y-4">
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-[#A0A0A0]">Southeast</span>
-                  <span className="text-sm text-white font-medium">67%</span>
+                  <span className="text-sm text-[#A0A0A0]">West Coast</span>
+                  <span className="text-sm text-white font-medium">72%</span>
                 </div>
                 <div className="w-full bg-[#1E1E1E] rounded-full h-2">
-                  <div className="bg-[#FF4444] h-2 rounded-full" style={{ width: '67%' }}></div>
+                  <div className="bg-[#FF4444] h-2 rounded-full" style={{ width: '72%' }}></div>
                 </div>
               </div>
               
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-[#A0A0A0]">Southwest</span>
-                  <span className="text-sm text-white font-medium">45%</span>
+                  <span className="text-sm text-[#A0A0A0]">Southeast</span>
+                  <span className="text-sm text-white font-medium">42%</span>
                 </div>
                 <div className="w-full bg-[#1E1E1E] rounded-full h-2">
-                  <div className="bg-[#FFB800] h-2 rounded-full" style={{ width: '45%' }}></div>
+                  <div className="bg-[#FFB800] h-2 rounded-full" style={{ width: '42%' }}></div>
                 </div>
               </div>
               
@@ -339,19 +348,19 @@ export default function StreetBuzzPage() {
               
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-[#A0A0A0]">West Coast</span>
-                  <span className="text-sm text-white font-medium">28%</span>
+                  <span className="text-sm text-[#A0A0A0]">Southwest</span>
+                  <span className="text-sm text-white font-medium">25%</span>
                 </div>
                 <div className="w-full bg-[#1E1E1E] rounded-full h-2">
-                  <div className="bg-[#00FF9C] h-2 rounded-full" style={{ width: '28%' }}></div>
+                  <div className="bg-[#00FF9C] h-2 rounded-full" style={{ width: '25%' }}></div>
                 </div>
               </div>
             </div>
 
             <div className="mt-6 pt-4 border-t border-[#333333]">
               <p className="text-sm text-[#A0A0A0]">
-                Your strongest markets are in the <span className="text-[#FF4444] font-medium">Southeast</span>, 
-                with Atlanta leading engagement. Consider geo-targeted campaigns in emerging markets.
+                Your strongest markets are on the <span className="text-[#FF4444] font-medium">West Coast</span>, 
+                with Los Angeles leading engagement. Consider geo-targeted campaigns in emerging markets.
               </p>
             </div>
           </div>

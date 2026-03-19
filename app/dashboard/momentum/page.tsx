@@ -110,28 +110,28 @@ export default function MomentumPage() {
 
   const trendingPlaylists = [
     {
-      name: "Atlanta Underground",
+      name: "West Coast Underground",
       curator: "Spotify",
       followers: "234K",
       dateAdded: "2024-03-15",
       streams: "12.4K"
     },
     {
-      name: "Southern Heat",
+      name: "LA Heat",
       curator: "Apple Music",
       followers: "189K",
       dateAdded: "2024-03-14",
       streams: "8.7K"
     },
     {
-      name: "Next Up ATL",
+      name: "Next Up LA",
       curator: "Tidal",
       followers: "67K",
       dateAdded: "2024-03-13",
       streams: "5.2K"
     },
     {
-      name: "Lagos Vibes",
+      name: "Crenshaw Vibes",
       curator: "Audiomack",
       followers: "145K",
       dateAdded: "2024-03-12",
@@ -185,10 +185,10 @@ export default function MomentumPage() {
             </span>
           </div>
           <div className="bg-[#0A0A0A] rounded-lg p-4 mb-4">
-            <h4 className="text-[#C9A86A] font-semibold mb-2">Atlanta Market Window Closing</h4>
+            <h4 className="text-[#C9A86A] font-semibold mb-2">Los Angeles Market Window Closing</h4>
             <p className="text-white leading-relaxed">
-              Run geo-targeted promotion in Atlanta within <strong>72 hours</strong>. Early surge momentum detected with 
-              +127% growth. Market indicators show peak receptivity. Recommended budget: $2,500-$5,000 for maximum impact.
+              Run geo-targeted promotion in Los Angeles within <strong>72 hours</strong>. Early surge momentum detected with 
+              +152% growth. Market indicators show peak receptivity. Recommended budget: $2,500-$5,000 for maximum impact.
             </p>
           </div>
           <div className="flex items-center justify-between">
@@ -281,19 +281,19 @@ export default function MomentumPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
               <div className="text-center">
                 <div className="text-xl sm:text-2xl font-bold text-[#C9A86A] mb-1 stat-number">3rd</div>
-                <div className="text-[#A0A0A0] text-xs sm:text-sm">Atlanta Ranking</div>
-                <div className="text-[#00C2FF] text-xs sm:text-sm">Behind Lil Baby, 21 Savage</div>
+                <div className="text-[#A0A0A0] text-xs sm:text-sm">Los Angeles Ranking</div>
+                <div className="text-[#00C2FF] text-xs sm:text-sm">Behind Roddy Ricch, Blxst</div>
               </div>
               
               <div className="text-center">
-                <div className="text-xl sm:text-2xl font-bold text-[#C9A86A] mb-1 stat-number">7th</div>
-                <div className="text-[#A0A0A0] text-xs sm:text-sm">Lagos Ranking</div>
+                <div className="text-xl sm:text-2xl font-bold text-[#C9A86A] mb-1 stat-number">5th</div>
+                <div className="text-[#A0A0A0] text-xs sm:text-sm">San Francisco Ranking</div>
                 <div className="text-[#7B2EFF] text-xs sm:text-sm">Rising fast (+5 positions)</div>
               </div>
               
               <div className="text-center">
-                <div className="text-xl sm:text-2xl font-bold text-[#C9A86A] mb-1 stat-number">12th</div>
-                <div className="text-[#A0A0A0] text-xs sm:text-sm">Houston Ranking</div>
+                <div className="text-xl sm:text-2xl font-bold text-[#C9A86A] mb-1 stat-number">8th</div>
+                <div className="text-[#A0A0A0] text-xs sm:text-sm">Atlanta Ranking</div>
                 <div className="text-[#A0A0A0] text-xs sm:text-sm">Steady position</div>
               </div>
             </div>

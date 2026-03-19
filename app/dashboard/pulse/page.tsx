@@ -156,9 +156,9 @@ export default function PulsePage() {
             <h3 className="text-base sm:text-lg font-semibold text-white">AI Cultural Insight</h3>
           </div>
           <p className="text-sm sm:text-base text-white leading-relaxed">
-            Your name is being mentioned alongside <strong className="text-[#00FF9C]">Lil Baby</strong> and <strong className="text-[#00FF9C]">21 Savage</strong> in Atlanta hip-hop discussions. 
-            This association is strengthening across 3 major podcast networks and underground blog circles. The narrative is positioning you as part of the "next wave" 
-            of Atlanta talent. <span className="text-[#C9A86A]">Recommendation: Engage with this association through strategic collaborations or co-signs.</span>
+            Your name is being mentioned alongside <strong className="text-[#00FF9C]">Blxst</strong> and <strong className="text-[#00FF9C]">Roddy Ricch</strong> in West Coast hip-hop discussions. 
+            This association is strengthening across 3 major podcast networks and underground blog circles. The narrative is positioning you as part of the &quot;next wave&quot; 
+            of LA talent. <span className="text-[#C9A86A]">Recommendation: Engage with this association through strategic collaborations or co-signs.</span>
           </p>
         </div>
 
@@ -227,7 +227,7 @@ export default function PulsePage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-white">r/hiphopheads</h4>
-                      <p className="text-sm text-[#A0A0A0]">Atlanta's Underground Scene Discussion</p>
+                      <p className="text-sm text-[#A0A0A0]">LA&apos;s Underground Scene Discussion</p>
                     </div>
                   </div>
                   <button className="text-[#A0A0A0] hover:text-[#00C2FF] transition-colors">
@@ -255,7 +255,7 @@ export default function PulsePage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-white">KanyeToThe</h4>
-                      <p className="text-sm text-[#A0A0A0]">Next Up: ATL Edition</p>
+                      <p className="text-sm text-[#A0A0A0]">Next Up: West Coast Edition</p>
                     </div>
                   </div>
                   <button className="text-[#A0A0A0] hover:text-[#00C2FF] transition-colors">

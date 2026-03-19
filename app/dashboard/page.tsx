@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { DashboardLayout } from '@/components/ui/DashboardLayout';
 import { 
   TrendingUp, 
@@ -14,7 +14,11 @@ import {
   ExternalLink,
   Play,
   Calendar,
-  Send
+  Send,
+  Heart,
+  Eye,
+  ChevronDown,
+  Flame
 } from 'lucide-react';
 import { momentumData, quickStats, recentActivity, artistProfile, dashboardWidgets } from '@/data/mockData';
 
@@ -26,7 +30,6 @@ const MomentumGauge = ({ score, change }: { score: number; change: number }) => 
   return (
     <div className="relative w-32 h-32">
       <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
-        {/* Background circle */}
         <circle
           cx="50"
           cy="50"
@@ -35,7 +38,6 @@ const MomentumGauge = ({ score, change }: { score: number; change: number }) => 
           strokeWidth="8"
           fill="transparent"
         />
-        {/* Progress circle */}
         <circle
           cx="50"
           cy="50"
@@ -48,7 +50,6 @@ const MomentumGauge = ({ score, change }: { score: number; change: number }) => 
           strokeLinecap="round"
           className="transition-all duration-1000 ease-out"
         />
-        {/* Gradient definition */}
         <defs>
           <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#00C2FF" />
@@ -80,9 +81,9 @@ const ActivityCard = ({ activity }: { activity: any }) => {
 
   const getColor = (impact: string) => {
     switch (impact) {
-      case 'High': return 'border-l-status-success';
-      case 'Medium': return 'border-l-accent-blue';
-      default: return 'border-l-text-secondary';
+      case 'High': return 'border-l-[#00FF9C]';
+      case 'Medium': return 'border-l-[#00C2FF]';
+      default: return 'border-l-[#A0A0A0]';
     }
   };
 
@@ -104,10 +105,188 @@ const ActivityCard = ({ activity }: { activity: any }) => {
             ? 'bg-[#00FF9C]/20 text-[#00FF9C]'
             : activity.impact === 'Medium'
             ? 'bg-[#00C2FF]/20 text-[#00C2FF]'
-            : 'bg-text-secondary/20 text-[#A0A0A0]'
+            : 'bg-[#A0A0A0]/20 text-[#A0A0A0]'
         }`}>
           {activity.impact}
         </span>
+      </div>
+    </div>
+  );
+};
+
+/* ── Trending Now Video Player ── */
+
+const trendingVideos = {
+  myHottest: {
+    main: {
+      title: "Midnight on Crenshaw (Official Video)",
+      artist: "Kendrick Cole",
+      views: "2.4M",
+      likes: "187K",
+      uploadDate: "Mar 12, 2024",
+      rank: 1,
+    },
+    upNext: [
+      { title: "Studio Session pt. 3", artist: "Kendrick Cole", views: "1.1M", rank: 2 },
+      { title: "West Side Story (Freestyle)", artist: "Kendrick Cole", views: "890K", rank: 3 },
+      { title: "SlapBox Cypher", artist: "Kendrick Cole ft. Blxst", views: "674K", rank: 4 },
+      { title: "LA Nights (Acoustic)", artist: "Kendrick Cole", views: "412K", rank: 5 },
+    ],
+  },
+  localTrending: {
+    main: {
+      title: "Die Hard (Official Video)",
+      artist: "Roddy Ricch",
+      views: "18.7M",
+      likes: "1.2M",
+      uploadDate: "Feb 28, 2024",
+      rank: 1,
+    },
+    upNext: [
+      { title: "Chosen", artist: "Blxst ft. Tyga", views: "9.3M", rank: 2 },
+      { title: "Hussle & Motivate (Legacy)", artist: "Nipsey Hussle", views: "7.8M", rank: 3 },
+      { title: "South Central Love", artist: "G Perico", views: "4.1M", rank: 4 },
+      { title: "Larry's Diaries", artist: "Larry June", views: "3.6M", rank: 5 },
+    ],
+  },
+};
+
+const cities = [
+  "Los Angeles, CA", "Long Beach, CA", "Compton, CA", "Sacramento, CA",
+  "San Francisco, CA", "Oakland, CA", "San Diego, CA", "Atlanta, GA",
+  "New York, NY", "Chicago, IL", "Houston, TX", "Miami, FL",
+];
+
+const genres = [
+  "Hip-Hop/Rap", "R&B", "Pop", "Latin", "Rock", "Country", "Electronic", "Afrobeats",
+];
+
+const TrendingNowPlayer = () => {
+  const [mode, setMode] = useState<'myHottest' | 'localTrending'>('myHottest');
+  const [city, setCity] = useState('Los Angeles, CA');
+  const [genre, setGenre] = useState('Hip-Hop/Rap');
+  const data = trendingVideos[mode];
+
+  return (
+    <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl overflow-hidden relative">
+      {/* Glow effects */}
+      <div className="absolute -top-24 -left-24 w-64 h-64 bg-[#00C2FF]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-[#7B2EFF]/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative z-10 p-4 sm:p-6">
+        {/* Header row */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+          <div className="flex items-center gap-2">
+            <Flame className="w-5 h-5 text-[#FF3B3B]" />
+            <h2 className="text-lg sm:text-xl font-bold text-white">Trending Now</h2>
+          </div>
+
+          {/* Toggle */}
+          <div className="flex bg-[#0A0A0A] rounded-lg p-1 self-start sm:self-auto">
+            <button
+              onClick={() => setMode('myHottest')}
+              className={`px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all min-h-[44px] ${
+                mode === 'myHottest' ? 'bg-[#00C2FF] text-white' : 'text-[#A0A0A0] hover:text-white'
+              }`}
+            >
+              My Hottest
+            </button>
+            <button
+              onClick={() => setMode('localTrending')}
+              className={`px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all min-h-[44px] ${
+                mode === 'localTrending' ? 'bg-[#7B2EFF] text-white' : 'text-[#A0A0A0] hover:text-white'
+              }`}
+            >
+              Local Trending
+            </button>
+          </div>
+        </div>
+
+        {/* Dropdowns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+          <div className="relative">
+            <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A0A0A0] pointer-events-none" />
+            <select
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              className="w-full bg-[#0A0A0A] border border-[#2A2A2A] text-white rounded-lg pl-9 pr-8 py-3 text-sm appearance-none min-h-[44px] focus:border-[#00C2FF] focus:outline-none"
+            >
+              {cities.map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A0A0A0] pointer-events-none" />
+          </div>
+          <div className="relative">
+            <select
+              value={genre}
+              onChange={(e) => setGenre(e.target.value)}
+              className="w-full bg-[#0A0A0A] border border-[#2A2A2A] text-white rounded-lg px-4 pr-8 py-3 text-sm appearance-none min-h-[44px] focus:border-[#00C2FF] focus:outline-none"
+            >
+              {genres.map((g) => (
+                <option key={g} value={g}>{g}</option>
+              ))}
+            </select>
+            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A0A0A0] pointer-events-none" />
+          </div>
+        </div>
+
+        {/* Main video mockup — 16:9 */}
+        <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-[#141414] to-[#0A0A0A]" />
+          {/* subtle gradient glow behind play */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute w-32 h-32 bg-[#00C2FF]/20 rounded-full blur-2xl" />
+            <button className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all min-h-[44px] min-w-[44px]">
+              <Play className="w-7 h-7 sm:w-9 sm:h-9 text-white fill-white ml-1" />
+            </button>
+          </div>
+
+          {/* Rank badge */}
+          <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#C9A86A] text-black text-xs font-bold px-2 py-1 rounded-md flex items-center gap-1">
+            <TrendingUp className="w-3 h-3" /> #{data.main.rank} Trending
+          </div>
+
+          {/* Bottom overlay info */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4 sm:p-5">
+            <h3 className="text-white font-bold text-base sm:text-lg truncate">{data.main.title}</h3>
+            <p className="text-[#A0A0A0] text-sm">{data.main.artist}</p>
+            <div className="flex items-center gap-4 mt-2 text-xs sm:text-sm text-[#A0A0A0]">
+              <span className="flex items-center gap-1"><Eye className="w-3.5 h-3.5" /> {data.main.views}</span>
+              <span className="flex items-center gap-1"><Heart className="w-3.5 h-3.5 text-[#FF3B3B]" /> {data.main.likes}</span>
+              <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {data.main.uploadDate}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Up Next — horizontal scroll */}
+        <div className="mt-4">
+          <h4 className="text-sm font-semibold text-[#A0A0A0] mb-3 tracking-wide uppercase">Up Next</h4>
+          <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-thin scrollbar-thumb-[#2A2A2A]">
+            {data.upNext.map((v, i) => (
+              <button
+                key={i}
+                className="flex-shrink-0 w-40 sm:w-48 bg-[#0A0A0A] border border-[#2A2A2A] rounded-lg overflow-hidden hover:border-[#00C2FF]/50 transition-all group min-h-[44px]"
+              >
+                {/* Thumbnail */}
+                <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#141414] to-[#0A0A0A]" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Play className="w-5 h-5 text-white/40 group-hover:text-white/80 transition-colors" />
+                  </div>
+                  <div className="absolute top-1.5 left-1.5 bg-[#C9A86A]/90 text-black text-[10px] font-bold px-1.5 py-0.5 rounded">
+                    #{v.rank}
+                  </div>
+                </div>
+                <div className="p-2">
+                  <p className="text-white text-xs font-medium truncate">{v.title}</p>
+                  <p className="text-[#A0A0A0] text-[10px] truncate">{v.artist}</p>
+                  <p className="text-[#00C2FF] text-[10px] mt-0.5">{v.views} views</p>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -117,6 +296,9 @@ export default function Dashboard() {
   return (
     <DashboardLayout>
       <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+        {/* Trending Now Video Player */}
+        <TrendingNowPlayer />
+
         {/* Hero Panel - Current Momentum */}
         <div className="gradient-border-card hero-mesh">
           <div className="bg-[#0A0A0A]/90 rounded-lg p-4 sm:p-6 lg:p-8 relative noise-overlay">
@@ -145,7 +327,6 @@ export default function Dashboard() {
               <div className="bg-[#141414]/80 border-t-2 border-t-[#00C2FF] rounded-lg p-4 card-glow dashboard-accent noise-overlay relative">
                 <div className="flex items-center justify-between mb-3">
                   <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#00C2FF]" />
-                  <span className="status-dot active"></span>
                   <span className="text-xs bg-[#00FF9C]/20 text-[#00FF9C] px-2 py-1 rounded-full font-medium">
                     Active
                   </span>
@@ -162,12 +343,12 @@ export default function Dashboard() {
               <div className="bg-[#141414]/80 border-t-2 border-t-[#00FF9C] rounded-lg p-4 card-glow dashboard-accent noise-overlay relative">
                 <div className="flex items-center justify-between mb-3">
                   <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-[#00FF9C]" />
-                  <div className="w-3 h-3 bg-[#00FF9C] rounded-full animate-pulse-dot"></div>
+                  <div className="w-3 h-3 bg-[#00FF9C] rounded-full animate-pulse"></div>
                 </div>
                 <div className="text-xl sm:text-2xl font-bold text-white mb-1 stat-number">{momentumData.direction}</div>
                 <div className="text-[#A0A0A0] text-xs sm:text-sm">Trend Direction</div>
                 <div className="text-[#00FF9C] text-xs sm:text-sm font-medium mt-2">
-                  +127% growth
+                  +152% growth
                 </div>
               </div>
 
@@ -178,7 +359,7 @@ export default function Dashboard() {
                   <span className="text-xs text-[#7B2EFF] font-medium tracking-wide">AI INSIGHT</span>
                 </div>
                 <p className="text-xs sm:text-sm text-white leading-relaxed">
-                  Your sound is resonating in underground Atlanta circles tied to nightlife DJs. 
+                  Your sound is resonating in West Coast underground circles tied to nightlife DJs and Blxst&apos;s audience. 
                   Strike within 48 hours.
                 </p>
               </div>
@@ -202,7 +383,7 @@ export default function Dashboard() {
               {dashboardWidgets.streetBuzz.topCities.map((city, index) => (
                 <div key={city} className="flex items-center justify-between">
                   <span className="text-sm text-white">#{index + 1} {city}</span>
-                  <div className="w-2 h-2 rounded-full bg-[#00FF9C] animate-pulse-dot"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#00FF9C] animate-pulse"></div>
                 </div>
               ))}
             </div>
@@ -304,14 +485,14 @@ export default function Dashboard() {
               <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-[#C9A86A] group-hover:scale-110 transition-transform" />
               <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-[#A0A0A0]" />
             </div>
-            <div className="text-white font-medium text-sm sm:text-base">Atlanta Campaign</div>
+            <div className="text-white font-medium text-sm sm:text-base">LA Campaign</div>
             <div className="text-[#A0A0A0] text-xs sm:text-sm">Run geo-targeted push</div>
           </button>
 
           <button className="bg-[#141414]/80 hover:bg-[#0A0A0A] border border-[#FFB800] border-pulse rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow revenue-accent group noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
               <DollarSign className="w-5 h-5 sm:w-6 sm:h-6 text-[#FFB800] group-hover:scale-110 transition-transform" />
-              <span className="status-dot urgent"></span>
+              <span className="w-2 h-2 bg-[#FF3B3B] rounded-full animate-pulse"></span>
             </div>
             <div className="text-white font-medium text-sm sm:text-base">Claim Revenue</div>
             <div className="text-[#FFB800] text-xs sm:text-sm font-medium">$4.5K unclaimed</div>

@@ -1,7 +1,7 @@
 export const artistProfile = {
   name: "Kendrick Cole",
   genre: "Hip-Hop",
-  location: "Atlanta, GA",
+  location: "Los Angeles, CA",
   followers: 847000,
   monthlyListeners: 2400000,
   avatar: "/api/placeholder/100/100"
@@ -10,7 +10,7 @@ export const artistProfile = {
 export const momentumData = {
   score: 78,
   change: 12,
-  topRegion: "Atlanta, GA",
+  topRegion: "Los Angeles, CA",
   direction: "Rising",
   emergingMarkets: 3,
   podcastNetworks: 2
@@ -47,7 +47,7 @@ export const podcastMentions = [
   {
     id: 3,
     show: "Complex Brackets",
-    episode: "Atlanta's Next Generation",
+    episode: "LA's Next Generation",
     timestamp: "0:12:33",
     sentiment: "Positive",
     date: "2024-03-16",
@@ -67,7 +67,7 @@ export const podcastMentions = [
   {
     id: 5,
     show: "No Jumper",
-    episode: "ATL Scene Check",
+    episode: "West Coast Scene Check",
     timestamp: "1:15:30",
     sentiment: "Neutral",
     date: "2024-03-14",
@@ -80,7 +80,7 @@ export const blogFeatures = [
   {
     id: 1,
     publication: "Pitchfork",
-    title: "10 Atlanta Artists Breaking Through",
+    title: "10 LA Artists Breaking Through",
     reach: "5.2M",
     date: "2024-03-18",
     sentiment: "Positive",
@@ -117,58 +117,58 @@ export const blogFeatures = [
 
 export const cityMomentumData = [
   {
-    city: "Atlanta",
+    city: "Los Angeles",
     country: "USA",
     status: "Early Surge",
-    growth: "+127%",
+    growth: "+152%",
+    listeners: "78.4K",
+    playlistAdds: 47,
+    color: "success"
+  },
+  {
+    city: "San Francisco",
+    country: "USA",
+    status: "Growing",
+    growth: "+89%",
+    listeners: "32.1K",
+    playlistAdds: 19,
+    color: "warning"
+  },
+  {
+    city: "Atlanta",
+    country: "USA",
+    status: "Growing",
+    growth: "+67%",
     listeners: "45.2K",
     playlistAdds: 23,
-    color: "success"
+    color: "warning"
+  },
+  {
+    city: "New York",
+    country: "USA",
+    status: "Rising",
+    growth: "+54%",
+    listeners: "51.3K",
+    playlistAdds: 21,
+    color: "blue"
   },
   {
     city: "Houston",
     country: "USA",
-    status: "Growing",
-    growth: "+67%",
-    listeners: "32.1K",
-    playlistAdds: 15,
-    color: "warning"
-  },
-  {
-    city: "London",
-    country: "UK",
-    status: "Dormant",
-    growth: "-12%",
-    listeners: "8.7K",
-    playlistAdds: 3,
-    color: "secondary"
-  },
-  {
-    city: "Lagos",
-    country: "Nigeria",
     status: "Emerging",
-    growth: "+234%",
+    growth: "+42%",
     listeners: "28.9K",
-    playlistAdds: 18,
+    playlistAdds: 15,
     color: "blue"
   },
   {
-    city: "Los Angeles",
+    city: "Chicago",
     country: "USA",
     status: "Stable",
-    growth: "+8%",
-    listeners: "51.3K",
-    playlistAdds: 12,
-    color: "primary"
-  },
-  {
-    city: "Toronto",
-    country: "Canada",
-    status: "Rising",
-    growth: "+89%",
+    growth: "+18%",
     listeners: "19.4K",
     playlistAdds: 9,
-    color: "blue"
+    color: "primary"
   }
 ];
 
@@ -292,20 +292,20 @@ export const recommendedActions = [
   },
   {
     id: 3,
-    title: "Run Atlanta geo-campaign - window closing in 48hrs",
+    title: "Run LA geo-campaign - window closing in 48hrs",
     priority: "Urgent",
     timeframe: "48 hours",
-    description: "Peak momentum detected in Atlanta market",
+    description: "Peak momentum detected in Los Angeles market",
     category: "Marketing",
     effort: "High",
     impact: "Very High"
   },
   {
     id: 4,
-    title: "Collaborate with emerging Lagos artists",
+    title: "Collaborate with emerging West Coast artists",
     priority: "Medium",
     timeframe: "2 weeks",
-    description: "Strong signal in Nigerian market - local collaboration opportunity",
+    description: "Strong signal in LA market - local collaboration opportunity with Blxst, Roddy Ricch",
     category: "Collaboration",
     effort: "High",
     impact: "Medium"
@@ -351,7 +351,7 @@ export const recentActivity = [
     id: 4,
     type: "geo",
     title: "Market momentum",
-    description: "Atlanta market showing early surge indicators",
+    description: "Los Angeles market showing early surge indicators",
     time: "8 hours ago",
     impact: "High"
   }
@@ -361,9 +361,9 @@ export const recentActivity = [
 export const upcomingEvents = [
   {
     id: 1,
-    name: "ATL Underground Showcase",
-    venue: "The Masquerade",
-    city: "Atlanta, GA",
+    name: "LA Underground Showcase",
+    venue: "The Novo at LA Live",
+    city: "Los Angeles, CA",
     date: "2024-03-25",
     time: "9:00 PM",
     ticketStatus: "On Sale",
@@ -374,28 +374,28 @@ export const upcomingEvents = [
   },
   {
     id: 2,
-    name: "SXSW Rising Stars",
-    venue: "Cheer Up Charlies",
-    city: "Austin, TX",
+    name: "West Coast Rising Stars",
+    venue: "The Roxy",
+    city: "West Hollywood, CA",
     date: "2024-03-28",
     time: "7:30 PM",
     ticketStatus: "Confirmed",
-    expectedAttendance: 400,
-    ticketsSold: 400,
-    ticketPrice: "Free",
+    expectedAttendance: 500,
+    ticketsSold: 412,
+    ticketPrice: "$30",
     presaleBuzz: 89
   },
   {
     id: 3,
-    name: "Houston Hip-Hop Collective",
-    venue: "White Oak Music Hall",
-    city: "Houston, TX",
+    name: "Hip-Hop at The Forum",
+    venue: "The Forum",
+    city: "Inglewood, CA",
     date: "2024-04-02",
     time: "8:00 PM",
     ticketStatus: "Pre-Sale",
     expectedAttendance: 1200,
     ticketsSold: 234,
-    ticketPrice: "$30",
+    ticketPrice: "$35",
     presaleBuzz: 156
   }
 ];
@@ -403,9 +403,9 @@ export const upcomingEvents = [
 export const pastEvents = [
   {
     id: 1,
-    name: "Atlanta Underground",
-    venue: "Terminal West",
-    city: "Atlanta, GA",
+    name: "Crenshaw Block Party",
+    venue: "The Wiltern",
+    city: "Los Angeles, CA",
     date: "2024-03-10",
     attendance: 780,
     revenue: "$19,500",
@@ -417,9 +417,9 @@ export const pastEvents = [
   },
   {
     id: 2,
-    name: "Miami Music Week",
-    venue: "Space",
-    city: "Miami, FL",
+    name: "SoCal Nights",
+    venue: "House of Blues",
+    city: "Anaheim, CA",
     date: "2024-03-05",
     attendance: 1200,
     revenue: "$36,000",
@@ -435,59 +435,125 @@ export const pastEvents = [
 export const streetBuzzData = {
   topCities: [
     {
-      name: "Atlanta",
-      state: "GA",
+      name: "Los Angeles",
+      state: "CA",
       heatLevel: "hot",
-      temperature: 94,
-      conversations: 2847,
-      hashtagUsage: "+340%",
-      playlistAdds: 127,
-      radioSpins: 23,
-      trafficShare: "34.2%"
+      temperature: 97,
+      conversations: 3842,
+      hashtagUsage: "+410%",
+      playlistAdds: 189,
+      radioSpins: 34,
+      trafficShare: "38.5%"
     },
     {
-      name: "Houston",
-      state: "TX", 
+      name: "Long Beach",
+      state: "CA",
       heatLevel: "warm",
-      temperature: 78,
+      temperature: 82,
+      conversations: 1423,
+      hashtagUsage: "+220%",
+      playlistAdds: 67,
+      radioSpins: 14,
+      trafficShare: "14.2%"
+    },
+    {
+      name: "Sacramento",
+      state: "CA",
+      heatLevel: "warm",
+      temperature: 76,
+      conversations: 1156,
+      hashtagUsage: "+175%",
+      playlistAdds: 52,
+      radioSpins: 11,
+      trafficShare: "11.8%"
+    },
+    {
+      name: "Atlanta",
+      state: "GA",
+      heatLevel: "warm",
+      temperature: 74,
       conversations: 1923,
       hashtagUsage: "+180%",
       playlistAdds: 89,
       radioSpins: 15,
-      trafficShare: "22.1%"
-    },
-    {
-      name: "Los Angeles",
-      state: "CA",
-      heatLevel: "cool",
-      temperature: 45,
-      conversations: 967,
-      hashtagUsage: "+45%",
-      playlistAdds: 34,
-      radioSpins: 8,
-      trafficShare: "12.8%"
-    },
-    {
-      name: "Chicago",
-      state: "IL",
-      heatLevel: "emerging",
-      temperature: 67,
-      conversations: 1456,
-      hashtagUsage: "+210%",
-      playlistAdds: 56,
-      radioSpins: 12,
-      trafficShare: "18.3%"
+      trafficShare: "18.1%"
     },
     {
       name: "New York",
       state: "NY",
-      heatLevel: "warm",
-      temperature: 72,
+      heatLevel: "emerging",
+      temperature: 65,
       conversations: 1734,
       hashtagUsage: "+155%",
       playlistAdds: 78,
       radioSpins: 19,
-      trafficShare: "25.6%"
+      trafficShare: "15.6%"
+    },
+    {
+      name: "San Francisco",
+      state: "CA",
+      heatLevel: "emerging",
+      temperature: 62,
+      conversations: 987,
+      hashtagUsage: "+130%",
+      playlistAdds: 41,
+      radioSpins: 9,
+      trafficShare: "9.4%"
+    },
+    {
+      name: "San Diego",
+      state: "CA",
+      heatLevel: "emerging",
+      temperature: 58,
+      conversations: 845,
+      hashtagUsage: "+110%",
+      playlistAdds: 35,
+      radioSpins: 7,
+      trafficShare: "7.8%"
+    },
+    {
+      name: "Oakland",
+      state: "CA",
+      heatLevel: "emerging",
+      temperature: 55,
+      conversations: 723,
+      hashtagUsage: "+95%",
+      playlistAdds: 29,
+      radioSpins: 6,
+      trafficShare: "6.5%"
+    },
+    {
+      name: "Chicago",
+      state: "IL",
+      heatLevel: "cool",
+      temperature: 48,
+      conversations: 1456,
+      hashtagUsage: "+85%",
+      playlistAdds: 56,
+      radioSpins: 12,
+      trafficShare: "12.3%"
+    },
+    {
+      name: "Houston",
+      state: "TX",
+      heatLevel: "cool",
+      temperature: 45,
+      conversations: 967,
+      hashtagUsage: "+65%",
+      playlistAdds: 34,
+      radioSpins: 8,
+      trafficShare: "8.8%"
+    },
+    {
+      name: "Miami",
+      state: "FL",
+      heatLevel: "cool",
+      temperature: 42,
+      conversations: 654,
+      hashtagUsage: "+55%",
+      playlistAdds: 23,
+      radioSpins: 5,
+      trafficShare: "5.2%"
     }
   ]
 };
@@ -496,7 +562,7 @@ export const streetBuzzData = {
 export const activeCampaigns = [
   {
     id: 1,
-    name: "Atlanta Street Campaign",
+    name: "LA Street Campaign",
     type: "PR",
     status: "Active",
     reach: "2.4M",
@@ -522,7 +588,7 @@ export const activeCampaigns = [
   },
   {
     id: 3,
-    name: "Radio Tour - Southeast",
+    name: "Radio Tour - West Coast",
     type: "Radio",
     status: "Active",
     reach: "3.1M",
@@ -701,7 +767,7 @@ export const podcastSubmissions = [
 export const competitorData = {
   drake: {
     name: "Drake",
-    trendingCities: ["Toronto", "Atlanta", "Los Angeles", "New York"],
+    trendingCities: ["Toronto", "Los Angeles", "New York", "Houston"],
     demographics: {
       age: { "18-24": 35, "25-34": 40, "35-44": 20, "45+": 5 },
       gender: { male: 45, female: 55 },
@@ -712,9 +778,9 @@ export const competitorData = {
     engagementRate: 8.7,
     monthlyStreams: "2.1B"
   },
-  jcole: {
+  "j.cole": {
     name: "J. Cole",
-    trendingCities: ["Charlotte", "Atlanta", "Chicago", "Detroit"],
+    trendingCities: ["Charlotte", "Los Angeles", "Chicago", "Detroit"],
     demographics: {
       age: { "18-24": 45, "25-34": 35, "35-44": 15, "45+": 5 },
       gender: { male: 60, female: 40 },
@@ -724,6 +790,84 @@ export const competitorData = {
     playlistPlacements: 523,
     engagementRate: 12.3,
     monthlyStreams: "1.8B"
+  },
+  kendricklamar: {
+    name: "Kendrick Lamar",
+    trendingCities: ["Los Angeles", "Compton", "New York", "Chicago"],
+    demographics: {
+      age: { "18-24": 38, "25-34": 40, "35-44": 17, "45+": 5 },
+      gender: { male: 58, female: 42 },
+      platforms: { spotify: 48, apple: 28, tiktok: 14, other: 10 }
+    },
+    contentTypes: ["Music Videos", "Live Performance", "Social Commentary", "Collaborations"],
+    playlistPlacements: 712,
+    engagementRate: 11.2,
+    monthlyStreams: "1.9B"
+  },
+  roddyricch: {
+    name: "Roddy Ricch",
+    trendingCities: ["Los Angeles", "Compton", "Atlanta", "Houston"],
+    demographics: {
+      age: { "18-24": 48, "25-34": 32, "35-44": 14, "45+": 6 },
+      gender: { male: 52, female: 48 },
+      platforms: { spotify: 44, apple: 26, tiktok: 22, other: 8 }
+    },
+    contentTypes: ["Music Videos", "Freestyles", "Behind Scenes", "Lifestyle"],
+    playlistPlacements: 389,
+    engagementRate: 9.4,
+    monthlyStreams: "890M"
+  },
+  blxst: {
+    name: "Blxst",
+    trendingCities: ["Los Angeles", "Long Beach", "San Diego", "Oakland"],
+    demographics: {
+      age: { "18-24": 42, "25-34": 38, "35-44": 15, "45+": 5 },
+      gender: { male: 48, female: 52 },
+      platforms: { spotify: 46, apple: 30, tiktok: 16, other: 8 }
+    },
+    contentTypes: ["Music Videos", "Acoustic Sessions", "Behind Scenes", "Collaborations"],
+    playlistPlacements: 245,
+    engagementRate: 10.8,
+    monthlyStreams: "420M"
+  },
+  metroboomin: {
+    name: "Metro Boomin",
+    trendingCities: ["Atlanta", "Los Angeles", "New York", "Chicago"],
+    demographics: {
+      age: { "18-24": 44, "25-34": 36, "35-44": 15, "45+": 5 },
+      gender: { male: 55, female: 45 },
+      platforms: { spotify: 47, apple: 27, tiktok: 18, other: 8 }
+    },
+    contentTypes: ["Production Credits", "Music Videos", "Collaborations", "Live Sets"],
+    playlistPlacements: 634,
+    engagementRate: 9.1,
+    monthlyStreams: "1.5B"
+  },
+  "21savage": {
+    name: "21 Savage",
+    trendingCities: ["Atlanta", "Los Angeles", "Houston", "New York"],
+    demographics: {
+      age: { "18-24": 42, "25-34": 37, "35-44": 16, "45+": 5 },
+      gender: { male: 56, female: 44 },
+      platforms: { spotify: 46, apple: 26, tiktok: 19, other: 9 }
+    },
+    contentTypes: ["Music Videos", "Freestyles", "Interviews", "Collaborations"],
+    playlistPlacements: 478,
+    engagementRate: 8.9,
+    monthlyStreams: "1.2B"
+  },
+  future: {
+    name: "Future",
+    trendingCities: ["Atlanta", "Miami", "Los Angeles", "Houston"],
+    demographics: {
+      age: { "18-24": 40, "25-34": 38, "35-44": 17, "45+": 5 },
+      gender: { male: 54, female: 46 },
+      platforms: { spotify: 44, apple: 28, tiktok: 18, other: 10 }
+    },
+    contentTypes: ["Music Videos", "Lifestyle", "Collaborations", "Studio Sessions"],
+    playlistPlacements: 567,
+    engagementRate: 8.5,
+    monthlyStreams: "1.6B"
   }
 };
 
@@ -808,11 +952,11 @@ export const twitchStreamers = [
 // DASHBOARD MINI-WIDGETS DATA
 export const dashboardWidgets = {
   streetBuzz: {
-    topCities: ["Atlanta", "Houston", "Chicago"]
+    topCities: ["Los Angeles", "Long Beach", "Sacramento"]
   },
   upcomingEvents: [
-    { name: "ATL Underground Showcase", date: "Mar 25", venue: "The Masquerade" },
-    { name: "SXSW Rising Stars", date: "Mar 28", venue: "Cheer Up Charlies" }
+    { name: "LA Underground Showcase", date: "Mar 25", venue: "The Novo at LA Live" },
+    { name: "West Coast Rising Stars", date: "Mar 28", venue: "The Roxy" }
   ],
   submissionStatus: {
     pending: 3,

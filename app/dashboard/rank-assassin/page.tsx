@@ -50,7 +50,7 @@ function generateDummyData(name: string): CompetitorEntry {
 
 const CompetitorSearch = ({ onSelect }: { onSelect: (artist: string, data?: CompetitorEntry) => void }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const presets = ['Drake', 'J. Cole', 'Metro Boomin', '21 Savage', 'Future'];
+  const presets = ['Roddy Ricch', 'Blxst', 'Kendrick Lamar', 'Drake', 'Metro Boomin'];
   
   const handleSearch = () => {
     const term = searchTerm.trim();

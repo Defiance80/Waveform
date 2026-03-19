@@ -135,7 +135,7 @@ export default function EchoPage() {
   const ugcContent = [
     {
       id: 1,
-      creator: "@atlantavibes",
+      creator: "@lavibes",
       type: "Remix",
       engagement: "45.2K",
       platform: "TikTok",
@@ -151,7 +151,7 @@ export default function EchoPage() {
     },
     {
       id: 3,
-      creator: "@hiphopheads_atl",
+      creator: "@hiphopheads_la",
       type: "Reaction Video",
       engagement: "28.7K",
       platform: "YouTube",
@@ -398,7 +398,7 @@ export default function EchoPage() {
               <div className="flex items-center space-x-3">
                 <Music className="w-5 h-5 text-[#C9A86A]" />
                 <div>
-                  <div className="text-white font-medium">Dance Routine by @dancecrew_atl</div>
+                  <div className="text-white font-medium">Dance Routine by @dancecrew_la</div>
                   <div className="text-[#A0A0A0] text-sm">156K views on TikTok</div>
                 </div>
               </div>
