@@ -19,8 +19,8 @@ import { cityMomentumData } from '@/data/mockData';
 const CityCard = ({ city }: { city: any }) => {
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Early Surge': return 'text-[#00FF9C] bg-[#00FF9C]/20 border-status-success/30';
-      case 'Growing': return 'text-[#FFB800] bg-[#FFB800]/20 border-status-warning/30';
+      case 'Early Surge': return 'text-[#00FF9C] bg-[#00FF9C]/20 border-[#00FF9C]/30';
+      case 'Growing': return 'text-[#FFB800] bg-[#FFB800]/20 border-[#FFB800]/30';
       case 'Rising': return 'text-[#00C2FF] bg-[#00C2FF]/20 border-[#00C2FF]/30';
       case 'Emerging': return 'text-[#00C2FF] bg-[#00C2FF]/20 border-[#00C2FF]/30';
       case 'Stable': return 'text-white bg-text-primary/20 border-text-primary/30';

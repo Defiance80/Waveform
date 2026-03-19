@@ -14,7 +14,7 @@ import {
   ExternalLink,
   Play
 } from 'lucide-react';
-import { momentumData, quickStats, recentActivity, artistProfile } from '@/data/mockData';
+import { momentumData, quickStats, recentActivity, artistProfile, dashboardWidgets } from '@/data/mockData';
 
 const MomentumGauge = ({ score, change }: { score: number; change: number }) => {
   const circumference = 2 * Math.PI * 45;

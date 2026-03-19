@@ -182,7 +182,7 @@ export default function EchoPage() {
         </div>
 
         {/* AI Insight */}
-        <div className="bg-gradient-to-br from-accent-purple/10 to-accent-blue/10 border border-[#7B2EFF]/20 rounded-lg p-6">
+        <div className="bg-gradient-to-br from-[#7B2EFF]/10 to-[#00C2FF]/10 border border-[#7B2EFF]/20 rounded-lg p-6">
           <div className="flex items-center mb-4">
             <Brain className="w-6 h-6 text-[#7B2EFF] mr-3" />
             <h3 className="text-lg font-semibold text-white">Content Intelligence</h3>
@@ -191,7 +191,7 @@ export default function EchoPage() {
             Your <strong>"Late Night Freestyle"</strong> clip is performing 340% above your average. The content is spreading organically from TikTok → Instagram → YouTube, 
             indicating strong cross-platform appeal. The freestyle format is resonating particularly well with your core demographic (18-24, hip-hop enthusiasts).
           </p>
-          <div className="bg-[#FF3B3B]/10 border border-status-danger/20 rounded-lg p-4">
+          <div className="bg-[#FF3B3B]/10 border border-[#FF3B3B]/20 rounded-lg p-4">
             <h4 className="text-[#FF3B3B] font-semibold mb-2">⚠️ Optimization Opportunity</h4>
             <p className="text-white text-sm">
               You did not post the highest-performing version. The 47-second cut is outperforming your official 30-second version by 280%. 

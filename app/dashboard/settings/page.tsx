@@ -200,7 +200,7 @@ export default function SettingsPage() {
         {/* Subscription */}
         <SettingsSection title="Subscription">
           <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-gradient-to-r from-accent-blue/10 to-accent-purple/10 border border-[#00C2FF]/20 rounded-lg">
+            <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#00C2FF]/10 to-[#7B2EFF]/10 border border-[#00C2FF]/20 rounded-lg">
               <div className="flex items-center space-x-3">
                 <Crown className="w-6 h-6 text-[#C9A86A]" />
                 <div>

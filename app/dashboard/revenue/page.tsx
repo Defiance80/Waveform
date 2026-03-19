@@ -379,7 +379,7 @@ export default function RevenuePage() {
           <h3 className="text-lg font-semibold text-white mb-4">Quick Revenue Actions</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <button className="bg-[#FF3B3B]/20 hover:bg-[#FF3B3B]/30 border border-status-danger/30 rounded-lg p-4 text-left transition-colors group">
+            <button className="bg-[#FF3B3B]/20 hover:bg-[#FF3B3B]/30 border border-[#FF3B3B]/30 rounded-lg p-4 text-left transition-colors group">
               <div className="flex items-center space-x-3">
                 <DollarSign className="w-6 h-6 text-[#FF3B3B] group-hover:scale-110 transition-transform" />
                 <div>

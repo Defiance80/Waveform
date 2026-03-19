@@ -129,7 +129,7 @@ const ActionCard = ({ action, onComplete, onSkip }: {
 };
 
 const StrategyBrief = () => (
-  <div className="bg-gradient-to-br from-accent-purple/10 to-accent-blue/10 border border-[#7B2EFF]/20 rounded-lg p-6">
+  <div className="bg-gradient-to-br from-[#7B2EFF]/10 to-[#00C2FF]/10 border border-[#7B2EFF]/20 rounded-lg p-6">
     <div className="flex items-center mb-4">
       <Brain className="w-6 h-6 text-[#7B2EFF] mr-3" />
       <h3 className="text-lg font-semibold text-white">AI Strategic Brief</h3>
@@ -421,7 +421,7 @@ export default function LeveragePage() {
             <div className="bg-[#111111] rounded-lg p-4 card-glow border border-[#1E1E1E]">
               <div className="space-y-2">
                 {actions.filter(action => completedActions.includes(action.id)).map((action) => (
-                  <div key={action.id} className="flex items-center justify-between p-3 bg-[#00FF9C]/10 border border-status-success/20 rounded-lg">
+                  <div key={action.id} className="flex items-center justify-between p-3 bg-[#00FF9C]/10 border border-[#00FF9C]/20 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-[#00FF9C]" />
                       <div>
