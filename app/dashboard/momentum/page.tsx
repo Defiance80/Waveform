@@ -45,7 +45,7 @@ const CityCard = ({ city }: { city: any }) => {
   };
 
   return (
-    <div className="bg-[#111111]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-4 sm:p-6 card-glow momentum-accent border border-[#1E1E1E] noise-overlay relative">
+    <div className="bg-[#141414]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-4 sm:p-6 card-glow momentum-accent border border-[#2A2A2A] noise-overlay relative">
       <div className="flex items-start justify-between mb-4">
         <div className="min-w-0 flex-1 mr-3">
           <h3 className="text-base sm:text-lg font-bold text-white truncate">{city.city}</h3>
@@ -87,7 +87,7 @@ const CityCard = ({ city }: { city: any }) => {
 };
 
 const PlaylistCard = ({ playlist }: { playlist: any }) => (
-  <div className="bg-[#111111]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-3 sm:p-4 card-glow momentum-accent border border-[#1E1E1E] noise-overlay relative">
+  <div className="bg-[#141414]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-3 sm:p-4 card-glow momentum-accent border border-[#2A2A2A] noise-overlay relative">
     <div className="flex items-center space-x-3 mb-3">
       <div className="w-12 h-12 bg-gradient-to-r from-[#00C2FF] to-[#7B2EFF] rounded-lg flex items-center justify-center">
         <Music className="w-6 h-6 text-white" />
@@ -157,7 +157,7 @@ export default function MomentumPage() {
               className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
                 viewMode === 'cards' 
                   ? 'bg-[#C9A86A] text-white' 
-                  : 'bg-[#111111] text-[#A0A0A0] hover:text-white'
+                  : 'bg-[#141414] text-[#A0A0A0] hover:text-white'
               }`}
             >
               Cards
@@ -167,7 +167,7 @@ export default function MomentumPage() {
               className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
                 viewMode === 'map' 
                   ? 'bg-[#C9A86A] text-white' 
-                  : 'bg-[#111111] text-[#A0A0A0] hover:text-white'
+                  : 'bg-[#141414] text-[#A0A0A0] hover:text-white'
               }`}
             >
               Map
@@ -205,7 +205,7 @@ export default function MomentumPage() {
 
         {/* Market Overview Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-          <div className="bg-[#111111]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-3 sm:p-4 card-glow momentum-accent noise-overlay relative">
+          <div className="bg-[#141414]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-3 sm:p-4 card-glow momentum-accent noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
               <Globe className="w-5 h-5 text-[#00C2FF]" />
               <ArrowUp className="w-4 h-4 text-[#00FF9C]" />
@@ -215,7 +215,7 @@ export default function MomentumPage() {
             <div className="text-[#C9A86A] text-xs sm:text-sm font-medium">+2 this month</div>
           </div>
 
-          <div className="bg-[#111111]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-3 sm:p-4 card-glow momentum-accent noise-overlay relative">
+          <div className="bg-[#141414]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-3 sm:p-4 card-glow momentum-accent noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
               <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#C9A86A]" />
               <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-[#C9A86A]" />
@@ -225,7 +225,7 @@ export default function MomentumPage() {
             <div className="text-[#C9A86A] text-xs sm:text-sm font-medium">+23% growth</div>
           </div>
 
-          <div className="bg-[#111111]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-3 sm:p-4 card-glow momentum-accent noise-overlay relative">
+          <div className="bg-[#141414]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-3 sm:p-4 card-glow momentum-accent noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
               <Music className="w-4 h-4 sm:w-5 sm:h-5 text-[#C9A86A]" />
               <ArrowUp className="w-3 h-3 sm:w-4 sm:h-4 text-[#00FF9C]" />
@@ -247,7 +247,7 @@ export default function MomentumPage() {
               ))}
             </div>
           ) : (
-            <div className="bg-[#111111]/80 border border-[#1E1E1E] rounded-lg p-6 sm:p-8 noise-overlay relative">
+            <div className="bg-[#141414]/80 border border-[#2A2A2A] rounded-lg p-6 sm:p-8 noise-overlay relative">
               <div className="text-center text-[#A0A0A0]">
                 <MapPin className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 opacity-50" />
                 <h3 className="text-base sm:text-lg font-medium mb-2">Interactive Map Coming Soon</h3>
@@ -277,7 +277,7 @@ export default function MomentumPage() {
         <div className="space-y-4">
           <h3 className="text-lg font-semibold text-white">Market Competition</h3>
           
-          <div className="bg-[#111111]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-4 sm:p-6 card-glow momentum-accent border border-[#1E1E1E] noise-overlay relative">
+          <div className="bg-[#141414]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-4 sm:p-6 card-glow momentum-accent border border-[#2A2A2A] noise-overlay relative">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
               <div className="text-center">
                 <div className="text-xl sm:text-2xl font-bold text-[#C9A86A] mb-1 stat-number">3rd</div>

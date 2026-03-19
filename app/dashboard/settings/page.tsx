@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 const SettingsSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="bg-[#111111] rounded-lg p-6 card-glow border border-[#1E1E1E]">
+  <div className="bg-[#141414] rounded-lg p-6 card-glow border border-[#2A2A2A]">
     <h3 className="text-lg font-semibold text-white mb-4">{title}</h3>
     {children}
   </div>
@@ -299,7 +299,7 @@ export default function SettingsPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {Object.entries(platforms).map(([platform, details]) => (
-                <div key={platform} className="flex items-center justify-between p-4 bg-[#0A0A0A] rounded-lg border border-[#1E1E1E]">
+                <div key={platform} className="flex items-center justify-between p-4 bg-[#0A0A0A] rounded-lg border border-[#2A2A2A]">
                   <div className="flex items-center space-x-3">
                     {getPlatformIcon(platform)}
                     <div>
@@ -371,15 +371,15 @@ export default function SettingsPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="text-center p-3 bg-[#0A0A0A] rounded-lg border border-[#1E1E1E]">
+              <div className="text-center p-3 bg-[#0A0A0A] rounded-lg border border-[#2A2A2A]">
                 <div className="text-lg font-bold text-white">2,847</div>
                 <div className="text-xs text-[#A0A0A0]">API Calls This Month</div>
               </div>
-              <div className="text-center p-3 bg-[#0A0A0A] rounded-lg border border-[#1E1E1E]">
+              <div className="text-center p-3 bg-[#0A0A0A] rounded-lg border border-[#2A2A2A]">
                 <div className="text-lg font-bold text-white">99.9%</div>
                 <div className="text-xs text-[#A0A0A0]">Uptime</div>
               </div>
-              <div className="text-center p-3 bg-[#0A0A0A] rounded-lg border border-[#1E1E1E]">
+              <div className="text-center p-3 bg-[#0A0A0A] rounded-lg border border-[#2A2A2A]">
                 <div className="text-lg font-bold text-white">47ms</div>
                 <div className="text-xs text-[#A0A0A0]">Avg Response Time</div>
               </div>
@@ -407,7 +407,7 @@ export default function SettingsPage() {
               <p>• Geographic momentum tracking</p>
             </div>
 
-            <div className="border-t border-[#1E1E1E] pt-4 text-center text-xs text-[#A0A0A0]">
+            <div className="border-t border-[#2A2A2A] pt-4 text-center text-xs text-[#A0A0A0]">
               Developed by <span className="text-[#C9A86A] font-medium">GoKoncentrate</span>
               <br />
               © 2024 WAVEFORM. All rights reserved.

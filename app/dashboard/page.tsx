@@ -87,7 +87,7 @@ const ActivityCard = ({ activity }: { activity: any }) => {
   };
 
   return (
-    <div className={`bg-[#111111]/80 rounded-lg p-3 sm:p-4 border-l-4 ${getColor(activity.impact)} card-glow dashboard-accent noise-overlay relative`}>
+    <div className={`bg-[#141414]/80 rounded-lg p-3 sm:p-4 border-l-4 ${getColor(activity.impact)} card-glow dashboard-accent noise-overlay relative`}>
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-start space-x-3 min-w-0 flex-1">
           <div className="p-2 bg-[#0A0A0A] rounded-lg text-[#00C2FF] flex-shrink-0">
@@ -142,7 +142,7 @@ export default function Dashboard() {
               </div>
 
               {/* Top Region */}
-              <div className="bg-[#111111]/80 border-t-2 border-t-[#00C2FF] rounded-lg p-4 card-glow dashboard-accent noise-overlay relative">
+              <div className="bg-[#141414]/80 border-t-2 border-t-[#00C2FF] rounded-lg p-4 card-glow dashboard-accent noise-overlay relative">
                 <div className="flex items-center justify-between mb-3">
                   <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#00C2FF]" />
                   <span className="status-dot active"></span>
@@ -159,7 +159,7 @@ export default function Dashboard() {
               </div>
 
               {/* Trend Direction */}
-              <div className="bg-[#111111]/80 border-t-2 border-t-[#00FF9C] rounded-lg p-4 card-glow dashboard-accent noise-overlay relative">
+              <div className="bg-[#141414]/80 border-t-2 border-t-[#00FF9C] rounded-lg p-4 card-glow dashboard-accent noise-overlay relative">
                 <div className="flex items-center justify-between mb-3">
                   <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-[#00FF9C]" />
                   <div className="w-3 h-3 bg-[#00FF9C] rounded-full animate-pulse-dot"></div>
@@ -189,7 +189,7 @@ export default function Dashboard() {
         {/* New Mini-Widgets */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Street Buzz Mini-Widget */}
-          <div className="bg-[#111111]/80 border border-[#1E1E1E] rounded-xl p-4 card-glow dashboard-accent noise-overlay relative">
+          <div className="bg-[#141414]/80 border border-[#2A2A2A] rounded-xl p-4 card-glow dashboard-accent noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
                 <TrendingUp className="w-5 h-5 text-[#00FF9C]" />
@@ -209,7 +209,7 @@ export default function Dashboard() {
           </div>
 
           {/* Upcoming Events Mini-Widget */}
-          <div className="bg-[#111111]/80 border border-[#1E1E1E] rounded-xl p-4 card-glow dashboard-accent noise-overlay relative">
+          <div className="bg-[#141414]/80 border border-[#2A2A2A] rounded-xl p-4 card-glow dashboard-accent noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
                 <Calendar className="w-5 h-5 text-[#FFB800]" />
@@ -228,7 +228,7 @@ export default function Dashboard() {
           </div>
 
           {/* Submission Status Mini-Widget */}
-          <div className="bg-[#111111]/80 border border-[#1E1E1E] rounded-xl p-4 card-glow dashboard-accent noise-overlay relative">
+          <div className="bg-[#141414]/80 border border-[#2A2A2A] rounded-xl p-4 card-glow dashboard-accent noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
                 <Send className="w-5 h-5 text-[#00C2FF]" />
@@ -256,7 +256,7 @@ export default function Dashboard() {
         {/* Quick Stats Row */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
           {quickStats.map((stat, index) => (
-            <div key={index} className="bg-[#111111]/80 border-t-2 border-t-[#00C2FF] rounded-lg p-3 sm:p-4 card-glow dashboard-accent noise-overlay relative">
+            <div key={index} className="bg-[#141414]/80 border-t-2 border-t-[#00C2FF] rounded-lg p-3 sm:p-4 card-glow dashboard-accent noise-overlay relative">
               <div className="text-lg sm:text-2xl font-bold text-white mb-1 stat-number">
                 {stat.value}
               </div>
@@ -290,7 +290,7 @@ export default function Dashboard() {
         
         {/* Quick Actions */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          <button className="bg-[#111111]/80 hover:bg-[#0A0A0A] border border-[#1E1E1E] rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow dashboard-accent group noise-overlay relative">
+          <button className="bg-[#141414]/80 hover:bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow dashboard-accent group noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
               <Radio className="w-5 h-5 sm:w-6 sm:h-6 text-[#00FF9C] group-hover:scale-110 transition-transform" />
               <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-[#A0A0A0]" />
@@ -299,7 +299,7 @@ export default function Dashboard() {
             <div className="text-[#A0A0A0] text-xs sm:text-sm">View cultural signals</div>
           </button>
 
-          <button className="bg-[#111111]/80 hover:bg-[#0A0A0A] border border-[#1E1E1E] rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow dashboard-accent group noise-overlay relative">
+          <button className="bg-[#141414]/80 hover:bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow dashboard-accent group noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
               <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-[#C9A86A] group-hover:scale-110 transition-transform" />
               <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-[#A0A0A0]" />
@@ -308,7 +308,7 @@ export default function Dashboard() {
             <div className="text-[#A0A0A0] text-xs sm:text-sm">Run geo-targeted push</div>
           </button>
 
-          <button className="bg-[#111111]/80 hover:bg-[#0A0A0A] border border-[#FFB800] border-pulse rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow revenue-accent group noise-overlay relative">
+          <button className="bg-[#141414]/80 hover:bg-[#0A0A0A] border border-[#FFB800] border-pulse rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow revenue-accent group noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
               <DollarSign className="w-5 h-5 sm:w-6 sm:h-6 text-[#FFB800] group-hover:scale-110 transition-transform" />
               <span className="status-dot urgent"></span>

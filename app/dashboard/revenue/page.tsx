@@ -36,7 +36,7 @@ const RevenueCard = ({ stream }: { stream: any }) => {
   };
 
   return (
-    <div className="bg-[#111111]/80 border-t-2 border-t-[#FFB800] rounded-lg p-4 sm:p-6 card-glow revenue-accent border border-[#1E1E1E] noise-overlay relative">
+    <div className="bg-[#141414]/80 border-t-2 border-t-[#FFB800] rounded-lg p-4 sm:p-6 card-glow revenue-accent border border-[#2A2A2A] noise-overlay relative">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-3">
           <div 
@@ -96,7 +96,7 @@ const AlertCard = ({ alert }: { alert: any }) => {
   };
 
   return (
-    <div className={`bg-[#111111]/80 rounded-lg p-4 sm:p-6 card-glow border-l-4 ${getPriorityColor(alert.priority)} noise-overlay relative`}>
+    <div className={`bg-[#141414]/80 rounded-lg p-4 sm:p-6 card-glow border-l-4 ${getPriorityColor(alert.priority)} noise-overlay relative`}>
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
           <div className={`p-2 rounded-lg ${getPriorityColor(alert.priority).includes('danger') ? 'bg-[#FF3B3B]/20' : 
@@ -178,7 +178,7 @@ export default function RevenuePage() {
             <select
               value={selectedTimeRange}
               onChange={(e) => setSelectedTimeRange(e.target.value)}
-              className="bg-[#111111] border border-[#1E1E1E] text-white rounded-lg px-3 py-2 text-sm"
+              className="bg-[#141414] border border-[#2A2A2A] text-white rounded-lg px-3 py-2 text-sm"
             >
               <option value="7d">Last 7 days</option>
               <option value="30d">Last 30 days</option>
@@ -189,7 +189,7 @@ export default function RevenuePage() {
 
         {/* Revenue Overview Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="bg-[#111111] rounded-lg p-4 card-glow">
+          <div className="bg-[#141414] rounded-lg p-4 card-glow">
             <div className="flex items-center justify-between mb-3">
               <DollarSign className="w-5 h-5 text-[#00FF9C]" />
               <TrendingUp className="w-4 h-4 text-[#00FF9C]" />
@@ -201,7 +201,7 @@ export default function RevenuePage() {
             <div className="text-[#00FF9C] text-sm font-medium">+23% this month</div>
           </div>
 
-          <div className="bg-[#111111] rounded-lg p-4 card-glow">
+          <div className="bg-[#141414] rounded-lg p-4 card-glow">
             <div className="flex items-center justify-between mb-3">
               <AlertTriangle className="w-5 h-5 text-[#FF3B3B]" />
               <Eye className="w-4 h-4 text-[#FF3B3B]" />
@@ -213,7 +213,7 @@ export default function RevenuePage() {
             <div className="text-[#FF3B3B] text-sm font-medium">Needs attention</div>
           </div>
 
-          <div className="bg-[#111111] rounded-lg p-4 card-glow">
+          <div className="bg-[#141414] rounded-lg p-4 card-glow">
             <div className="flex items-center justify-between mb-3">
               <Music className="w-5 h-5 text-[#00C2FF]" />
               <Zap className="w-4 h-4 text-[#00C2FF]" />
@@ -223,7 +223,7 @@ export default function RevenuePage() {
             <div className="text-[#00C2FF] text-sm font-medium">All connected</div>
           </div>
 
-          <div className="bg-[#111111] rounded-lg p-4 card-glow">
+          <div className="bg-[#141414] rounded-lg p-4 card-glow">
             <div className="flex items-center justify-between mb-3">
               <Clock className="w-5 h-5 text-[#7B2EFF]" />
               <TrendingUp className="w-4 h-4 text-[#00FF9C]" />
@@ -264,7 +264,7 @@ export default function RevenuePage() {
         {/* Revenue Analytics */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Revenue Trend */}
-          <div className="bg-[#111111] rounded-lg p-6 card-glow border border-[#1E1E1E]">
+          <div className="bg-[#141414] rounded-lg p-6 card-glow border border-[#2A2A2A]">
             <h3 className="text-lg font-semibold text-white mb-4">Revenue Trend</h3>
             
             <div className="h-64">
@@ -328,7 +328,7 @@ export default function RevenuePage() {
           </div>
 
           {/* Revenue Breakdown */}
-          <div className="bg-[#111111] rounded-lg p-6 card-glow border border-[#1E1E1E]">
+          <div className="bg-[#141414] rounded-lg p-6 card-glow border border-[#2A2A2A]">
             <h3 className="text-lg font-semibold text-white mb-4">Revenue Breakdown</h3>
             
             <div className="h-64">
@@ -375,7 +375,7 @@ export default function RevenuePage() {
         </div>
 
         {/* Quick Actions */}
-        <div className="bg-[#111111] rounded-lg p-6 card-glow border border-[#1E1E1E]">
+        <div className="bg-[#141414] rounded-lg p-6 card-glow border border-[#2A2A2A]">
           <h3 className="text-lg font-semibold text-white mb-4">Quick Revenue Actions</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

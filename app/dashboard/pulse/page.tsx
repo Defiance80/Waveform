@@ -46,7 +46,7 @@ const PulseCard = ({ item, type }: { item: any; type: 'podcast' | 'blog' | 'foru
   };
 
   return (
-    <div className="bg-[#111111]/80 border-t-2 border-t-[#00FF9C] rounded-lg p-4 sm:p-6 card-glow pulse-accent border border-[#1E1E1E] noise-overlay relative">
+    <div className="bg-[#141414]/80 border-t-2 border-t-[#00FF9C] rounded-lg p-4 sm:p-6 card-glow pulse-accent border border-[#2A2A2A] noise-overlay relative">
       <div className="flex items-start justify-between mb-4 gap-3">
         <div className="flex items-start space-x-3 min-w-0 flex-1">
           <div className="p-2 bg-[#00FF9C]/20 text-[#00FF9C] rounded-lg flex-shrink-0">
@@ -111,7 +111,7 @@ const FilterButton = ({ active, onClick, children }: { active: boolean; onClick:
     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
       active 
         ? 'bg-[#00C2FF] text-white shadow-lg' 
-        : 'bg-[#111111] text-[#A0A0A0] hover:text-white hover:bg-gray-800'
+        : 'bg-[#141414] text-[#A0A0A0] hover:text-white hover:bg-gray-800'
     }`}
   >
     {children}
@@ -139,7 +139,7 @@ export default function PulsePage() {
             <select
               value={timeRange}
               onChange={(e) => setTimeRange(e.target.value)}
-              className="bg-[#111111] border border-[#1E1E1E] text-white rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm min-w-[120px]"
+              className="bg-[#141414] border border-[#2A2A2A] text-white rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm min-w-[120px]"
             >
               <option value="24h">Last 24 hours</option>
               <option value="7d">Last 7 days</option>
@@ -219,7 +219,7 @@ export default function PulsePage() {
               Forum Activity (8)
             </h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
-              <div className="bg-[#111111]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-4 sm:p-6 card-glow pulse-accent border border-[#1E1E1E] noise-overlay relative">
+              <div className="bg-[#141414]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-4 sm:p-6 card-glow pulse-accent border border-[#2A2A2A] noise-overlay relative">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
                     <div className="p-2 bg-[#C9A86A]/20 text-[#C9A86A] rounded-lg">
@@ -247,7 +247,7 @@ export default function PulsePage() {
                 </div>
               </div>
 
-              <div className="bg-[#111111]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-4 sm:p-6 card-glow pulse-accent border border-[#1E1E1E] noise-overlay relative">
+              <div className="bg-[#141414]/80 border-t-2 border-t-[#C9A86A] rounded-lg p-4 sm:p-6 card-glow pulse-accent border border-[#2A2A2A] noise-overlay relative">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
                     <div className="p-2 bg-[#C9A86A]/20 text-[#C9A86A] rounded-lg">
@@ -285,7 +285,7 @@ export default function PulsePage() {
               <Hash className="w-5 h-5 mr-2 text-[#00FF9C]" />
               Social Media Mentions (47)
             </h3>
-            <div className="bg-[#111111]/80 border border-[#1E1E1E] rounded-lg p-4 sm:p-6 noise-overlay relative">
+            <div className="bg-[#141414]/80 border border-[#2A2A2A] rounded-lg p-4 sm:p-6 noise-overlay relative">
               <div className="text-center text-[#A0A0A0]">
                 <Hash className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-4 opacity-50" />
                 <p className="text-sm sm:text-base">Social media tracking coming soon</p>

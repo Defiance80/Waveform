@@ -20,7 +20,7 @@ const EventCard = ({ event, isPast = false }: { event: any; isPast?: boolean }) 
 
   if (isPast) {
     return (
-      <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-6 hover:bg-[#121212] transition-all">
+      <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-6 hover:bg-[#121212] transition-all">
         <div className="flex items-start justify-between mb-4">
           <div>
             <h3 className="text-lg font-bold text-white mb-1">{event.name}</h3>
@@ -64,7 +64,7 @@ const EventCard = ({ event, isPast = false }: { event: any; isPast?: boolean }) 
   }
 
   return (
-    <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-6 hover:bg-[#121212] transition-all">
+    <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-6 hover:bg-[#121212] transition-all">
       <div className="flex items-start justify-between mb-4">
         <div>
           <h3 className="text-lg font-bold text-white mb-1">{event.name}</h3>
@@ -149,7 +149,7 @@ export default function EventsPage() {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-          <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-4">
+          <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
               <Calendar className="w-5 h-5 text-[#FFB800]" />
               <TrendingUp className="w-4 h-4 text-[#00FF9C]" />
@@ -159,7 +159,7 @@ export default function EventsPage() {
             <div className="text-xs text-[#00FF9C] mt-1">Next in 6 days</div>
           </div>
 
-          <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-4">
+          <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
               <Users className="w-5 h-5 text-[#00C2FF]" />
               <BarChart3 className="w-4 h-4 text-[#FFB800]" />
@@ -169,7 +169,7 @@ export default function EventsPage() {
             <div className="text-xs text-[#FFB800] mt-1">857 tickets sold</div>
           </div>
 
-          <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-4">
+          <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
               <DollarSign className="w-5 h-5 text-[#00FF9C]" />
               <TrendingUp className="w-4 h-4 text-[#00FF9C]" />
@@ -179,7 +179,7 @@ export default function EventsPage() {
             <div className="text-xs text-[#00FF9C] mt-1">+340% vs last quarter</div>
           </div>
 
-          <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-4">
+          <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
               <Star className="w-5 h-5 text-[#FFB800]" />
               <AlertCircle className="w-4 h-4 text-[#FF3B3B]" />
@@ -191,7 +191,7 @@ export default function EventsPage() {
         </div>
 
         {/* Tabs */}
-        <div className="flex space-x-1 bg-[#111111] p-1 rounded-xl border border-[#1E1E1E] w-fit">
+        <div className="flex space-x-1 bg-[#141414] p-1 rounded-xl border border-[#2A2A2A] w-fit">
           <button
             onClick={() => setActiveTab('upcoming')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
@@ -252,7 +252,7 @@ export default function EventsPage() {
             <h2 className="text-xl font-bold text-white">Event Analytics</h2>
             
             {/* ROI Calculator */}
-            <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-6">
+            <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-6">
               <h3 className="text-lg font-bold text-white mb-4">Event ROI Calculator</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
@@ -280,7 +280,7 @@ export default function EventsPage() {
             </div>
 
             {/* Geographic Map Placeholder */}
-            <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-6">
+            <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-6">
               <h3 className="text-lg font-bold text-white mb-4">Event Locations</h3>
               <div className="h-64 bg-[#1E1E1E] rounded-lg flex items-center justify-center">
                 <div className="text-center">
@@ -296,7 +296,7 @@ export default function EventsPage() {
         {/* Add Event Modal */}
         {showAddEvent && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-            <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-6 w-full max-w-md">
+            <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-6 w-full max-w-md">
               <h3 className="text-lg font-bold text-white mb-4">Add New Event</h3>
               <div className="space-y-4">
                 <div>

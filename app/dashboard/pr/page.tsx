@@ -30,7 +30,7 @@ const CampaignCard = ({ campaign }: { campaign: any }) => {
   };
 
   return (
-    <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-6 hover:bg-[#121212] transition-all">
+    <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-6 hover:bg-[#121212] transition-all">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-start gap-3">
           <div className="p-2 bg-[#7B2EFF]/20 rounded-lg text-[#7B2EFF]">
@@ -141,7 +141,7 @@ const SentimentGauge = ({ positive, negative, neutral }: { positive: number; neg
 
 const ViralMomentCard = ({ moment }: { moment: any }) => {
   return (
-    <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-4 hover:bg-[#121212] transition-all">
+    <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-4 hover:bg-[#121212] transition-all">
       <div className="flex items-start justify-between mb-3">
         <div>
           <h4 className="font-bold text-white text-sm mb-1">{moment.title}</h4>
@@ -199,7 +199,7 @@ export default function PRPage() {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-          <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-4">
+          <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
               <BarChart3 className="w-5 h-5 text-[#7B2EFF]" />
               <TrendingUp className="w-4 h-4 text-[#00FF9C]" />
@@ -209,7 +209,7 @@ export default function PRPage() {
             <div className="text-xs text-[#00FF9C] mt-1">2 performing well</div>
           </div>
 
-          <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-4">
+          <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
               <Users className="w-5 h-5 text-[#00C2FF]" />
               <Star className="w-4 h-4 text-[#FFB800]" />
@@ -219,7 +219,7 @@ export default function PRPage() {
             <div className="text-xs text-[#FFB800] mt-1">26.1M impressions</div>
           </div>
 
-          <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-4">
+          <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
               <Target className="w-5 h-5 text-[#00FF9C]" />
               <AlertTriangle className="w-4 h-4 text-[#FF3B3B]" />
@@ -229,7 +229,7 @@ export default function PRPage() {
             <div className="text-xs text-[#00FF9C] mt-1">+12% this month</div>
           </div>
 
-          <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-4">
+          <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
               <DollarSign className="w-5 h-5 text-[#FFB800]" />
               <BarChart3 className="w-4 h-4 text-[#7B2EFF]" />
@@ -241,7 +241,7 @@ export default function PRPage() {
         </div>
 
         {/* Tabs */}
-        <div className="flex space-x-1 bg-[#111111] p-1 rounded-xl border border-[#1E1E1E] w-fit">
+        <div className="flex space-x-1 bg-[#141414] p-1 rounded-xl border border-[#2A2A2A] w-fit">
           <button
             onClick={() => setActiveTab('campaigns')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
@@ -302,7 +302,7 @@ export default function PRPage() {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Sentiment Gauge */}
-              <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-6">
+              <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Star className="w-5 h-5 text-[#FFB800]" />
                   <h3 className="text-lg font-bold text-white">Sentiment Analysis</h3>
@@ -320,7 +320,7 @@ export default function PRPage() {
               </div>
 
               {/* Recent Mentions */}
-              <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-6">
+              <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Radio className="w-5 h-5 text-[#00C2FF]" />
                   <h3 className="text-lg font-bold text-white">Recent Press Mentions</h3>
@@ -350,7 +350,7 @@ export default function PRPage() {
             </div>
 
             {/* Crisis Alerts */}
-            <div className="bg-[#111111] border border-[#FF3B3B] rounded-xl p-6">
+            <div className="bg-[#141414] border border-[#FF3B3B] rounded-xl p-6">
               <div className="flex items-center gap-3 mb-4">
                 <AlertTriangle className="w-5 h-5 text-[#FF3B3B]" />
                 <h3 className="text-lg font-bold text-white">Crisis Alert Center</h3>
@@ -374,7 +374,7 @@ export default function PRPage() {
             </div>
 
             {/* Viral Trends */}
-            <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-6">
+            <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-6">
               <h3 className="text-lg font-bold text-white mb-4">Viral Content Analysis</h3>
               <div className="space-y-4">
                 <div>
@@ -416,7 +416,7 @@ export default function PRPage() {
             <h2 className="text-xl font-bold text-white">PR Distribution Progress</h2>
             
             {/* Distribution Pipeline */}
-            <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-6">
+            <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-6">
               <h3 className="text-lg font-bold text-white mb-6">Distribution Pipeline</h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-6">
@@ -482,7 +482,7 @@ export default function PRPage() {
             </div>
 
             {/* Budget Tracking */}
-            <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-6">
+            <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-6">
               <h3 className="text-lg font-bold text-white mb-4">Campaign Budget Tracking</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -513,7 +513,7 @@ export default function PRPage() {
         {/* New Campaign Modal */}
         {showNewCampaign && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-            <div className="bg-[#111111] border border-[#1E1E1E] rounded-xl p-6 w-full max-w-md">
+            <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-6 w-full max-w-md">
               <h3 className="text-lg font-bold text-white mb-4">Create New Campaign</h3>
               <div className="space-y-4">
                 <div>

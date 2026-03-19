@@ -31,7 +31,7 @@ const ClipCard = ({ clip }: { clip: any }) => {
   };
 
   return (
-    <div className="bg-[#111111] rounded-lg p-6 card-glow border border-[#1E1E1E]">
+    <div className="bg-[#141414] rounded-lg p-6 card-glow border border-[#2A2A2A]">
       <div className="flex items-start space-x-4 mb-4">
         <div className="w-20 h-14 bg-gray-800 rounded-lg flex items-center justify-center">
           <Play className="w-6 h-6 text-[#00C2FF]" />
@@ -96,7 +96,7 @@ const ClipCard = ({ clip }: { clip: any }) => {
 };
 
 const PlatformFlow = ({ flow }: { flow: string[] }) => (
-  <div className="flex items-center space-x-2 bg-[#111111] rounded-lg p-4 border border-[#1E1E1E]">
+  <div className="flex items-center space-x-2 bg-[#141414] rounded-lg p-4 border border-[#2A2A2A]">
     {flow.map((platform, index) => (
       <React.Fragment key={index}>
         <div className="flex flex-col items-center">
@@ -172,7 +172,7 @@ export default function EchoPage() {
             <select
               value={selectedTimeRange}
               onChange={(e) => setSelectedTimeRange(e.target.value)}
-              className="bg-[#111111] border border-[#1E1E1E] text-white rounded-lg px-3 py-2 text-sm"
+              className="bg-[#141414] border border-[#2A2A2A] text-white rounded-lg px-3 py-2 text-sm"
             >
               <option value="24h">Last 24 hours</option>
               <option value="7d">Last 7 days</option>
@@ -201,7 +201,7 @@ export default function EchoPage() {
         </div>
 
         {/* Content Velocity Chart */}
-        <div className="bg-[#111111] rounded-lg p-6 card-glow border border-[#1E1E1E]">
+        <div className="bg-[#141414] rounded-lg p-6 card-glow border border-[#2A2A2A]">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-semibold text-white">Content Velocity</h3>
             <div className="flex items-center space-x-4 text-sm">
@@ -322,7 +322,7 @@ export default function EchoPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {ugcContent.map((content) => (
-              <div key={content.id} className="bg-[#111111] rounded-lg p-4 card-glow border border-[#1E1E1E]">
+              <div key={content.id} className="bg-[#141414] rounded-lg p-4 card-glow border border-[#2A2A2A]">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 bg-gradient-to-r from-[#00C2FF] to-[#7B2EFF] rounded-full flex items-center justify-center">
@@ -359,7 +359,7 @@ export default function EchoPage() {
         </div>
 
         {/* Remix & Cover Detection */}
-        <div className="bg-[#111111] rounded-lg p-6 card-glow border border-[#1E1E1E]">
+        <div className="bg-[#141414] rounded-lg p-6 card-glow border border-[#2A2A2A]">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-white">Remix & Cover Detection</h3>
             <span className="px-3 py-1 bg-[#00FF9C]/20 text-[#00FF9C] rounded-full text-sm font-medium">
