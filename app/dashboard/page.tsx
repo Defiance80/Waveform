@@ -85,19 +85,19 @@ const ActivityCard = ({ activity }: { activity: any }) => {
   };
 
   return (
-    <div className={`bg-[#111111] rounded-lg p-4 border-l-4 ${getColor(activity.impact)} card-glow`}>
-      <div className="flex items-start justify-between">
-        <div className="flex items-center space-x-3">
-          <div className="p-2 bg-[#0A0A0A] rounded-lg text-[#00C2FF]">
+    <div className={`bg-[#111111]/80 rounded-lg p-3 sm:p-4 border-l-4 ${getColor(activity.impact)} card-glow dashboard-accent noise-overlay relative`}>
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex items-start space-x-3 min-w-0 flex-1">
+          <div className="p-2 bg-[#0A0A0A] rounded-lg text-[#00C2FF] flex-shrink-0">
             {getIcon(activity.type)}
           </div>
-          <div className="flex-1">
-            <h4 className="font-medium text-white">{activity.title}</h4>
-            <p className="text-sm text-[#A0A0A0] mt-1">{activity.description}</p>
-            <span className="text-xs text-[#A0A0A0]">{activity.time}</span>
+          <div className="min-w-0 flex-1">
+            <h4 className="font-medium text-white text-sm sm:text-base truncate">{activity.title}</h4>
+            <p className="text-xs sm:text-sm text-[#A0A0A0] mt-1 leading-relaxed">{activity.description}</p>
+            <span className="text-xs text-[#A0A0A0] mt-1 block">{activity.time}</span>
           </div>
         </div>
-        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+        <span className={`px-2 py-1 rounded-full text-xs font-medium flex-shrink-0 ${
           activity.impact === 'High' 
             ? 'bg-[#00FF9C]/20 text-[#00FF9C]'
             : activity.impact === 'Medium'
@@ -114,22 +114,22 @@ const ActivityCard = ({ activity }: { activity: any }) => {
 export default function Dashboard() {
   return (
     <DashboardLayout>
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
         {/* Hero Panel - Current Momentum */}
-        <div className="gradient-border">
-          <div className="bg-[#0A0A0A] rounded-lg p-8">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h2 className="text-2xl font-bold text-white mb-2">CURRENT MOMENTUM</h2>
-                <p className="text-[#A0A0A0]">
+        <div className="gradient-border-card hero-mesh">
+          <div className="bg-[#0A0A0A]/90 rounded-lg p-4 sm:p-6 lg:p-8 relative noise-overlay">
+            <div className="flex items-start justify-between mb-4 sm:mb-6">
+              <div className="flex-1 min-w-0 mr-3">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 gradient-text accent-cyan">CURRENT MOMENTUM</h2>
+                <p className="text-sm sm:text-base text-[#A0A0A0] leading-relaxed">
                   You are trending in <span className="text-[#00C2FF] font-semibold">3 emerging markets</span> and{' '}
                   <span className="text-[#7B2EFF] font-semibold">2 underground podcast networks</span>.
                 </p>
               </div>
-              <Brain className="w-8 h-8 text-[#C9A86A]" />
+              <Brain className="w-6 h-6 sm:w-8 sm:h-8 text-[#C9A86A] flex-shrink-0" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {/* Momentum Score */}
               <div className="text-center">
                 <MomentumGauge score={momentumData.score} change={momentumData.change} />
@@ -140,41 +140,42 @@ export default function Dashboard() {
               </div>
 
               {/* Top Region */}
-              <div className="bg-[#111111] rounded-lg p-4 card-glow">
+              <div className="bg-[#111111]/80 border-t-2 border-t-[#00C2FF] rounded-lg p-4 card-glow dashboard-accent noise-overlay relative">
                 <div className="flex items-center justify-between mb-3">
-                  <MapPin className="w-5 h-5 text-[#00C2FF]" />
-                  <span className="text-xs bg-[#00FF9C]/20 text-[#00FF9C] px-2 py-1 rounded-full">
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#00C2FF]" />
+                  <span className="status-dot active"></span>
+                  <span className="text-xs bg-[#00FF9C]/20 text-[#00FF9C] px-2 py-1 rounded-full font-medium">
                     Active
                   </span>
                 </div>
-                <div className="text-2xl font-bold text-white mb-1">{momentumData.topRegion}</div>
-                <div className="text-[#A0A0A0] text-sm">Top Region</div>
-                <div className="text-[#00C2FF] text-sm font-medium mt-2 flex items-center">
+                <div className="text-xl sm:text-2xl font-bold text-white mb-1 stat-number">{momentumData.topRegion}</div>
+                <div className="text-[#A0A0A0] text-xs sm:text-sm">Top Region</div>
+                <div className="text-[#00C2FF] text-xs sm:text-sm font-medium mt-2 flex items-center">
                   <ArrowUp className="w-3 h-3 mr-1" />
                   Early Surge
                 </div>
               </div>
 
               {/* Trend Direction */}
-              <div className="bg-[#111111] rounded-lg p-4 card-glow">
+              <div className="bg-[#111111]/80 border-t-2 border-t-[#00FF9C] rounded-lg p-4 card-glow dashboard-accent noise-overlay relative">
                 <div className="flex items-center justify-between mb-3">
-                  <TrendingUp className="w-5 h-5 text-[#00FF9C]" />
-                  <div className="w-3 h-3 bg-[#00FF9C] rounded-full animate-pulse"></div>
+                  <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-[#00FF9C]" />
+                  <div className="w-3 h-3 bg-[#00FF9C] rounded-full animate-pulse-dot"></div>
                 </div>
-                <div className="text-2xl font-bold text-white mb-1">{momentumData.direction}</div>
-                <div className="text-[#A0A0A0] text-sm">Trend Direction</div>
-                <div className="text-[#00FF9C] text-sm font-medium mt-2">
+                <div className="text-xl sm:text-2xl font-bold text-white mb-1 stat-number">{momentumData.direction}</div>
+                <div className="text-[#A0A0A0] text-xs sm:text-sm">Trend Direction</div>
+                <div className="text-[#00FF9C] text-xs sm:text-sm font-medium mt-2">
                   +127% growth
                 </div>
               </div>
 
               {/* AI Insight */}
-              <div className="bg-gradient-to-br from-accent-blue/10 to-accent-purple/10 border border-[#00C2FF]/20 rounded-lg p-4">
+              <div className="ai-insight-card rounded-lg p-4 relative">
                 <div className="flex items-center mb-3">
-                  <Brain className="w-5 h-5 text-[#7B2EFF] mr-2" />
-                  <span className="text-xs text-[#7B2EFF] font-medium">AI INSIGHT</span>
+                  <Brain className="w-4 h-4 sm:w-5 sm:h-5 text-[#7B2EFF] mr-2" />
+                  <span className="text-xs text-[#7B2EFF] font-medium tracking-wide">AI INSIGHT</span>
                 </div>
-                <p className="text-sm text-white leading-relaxed">
+                <p className="text-xs sm:text-sm text-white leading-relaxed">
                   Your sound is resonating in underground Atlanta circles tied to nightlife DJs. 
                   Strike within 48 hours.
                 </p>
@@ -184,23 +185,26 @@ export default function Dashboard() {
         </div>
 
         {/* Quick Stats Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
           {quickStats.map((stat, index) => (
-            <div key={index} className="bg-[#111111] rounded-lg p-4 card-glow">
-              <div className="text-2xl font-bold text-white mb-1 animate-count-up">
+            <div key={index} className="bg-[#111111]/80 border-t-2 border-t-[#00C2FF] rounded-lg p-3 sm:p-4 card-glow dashboard-accent noise-overlay relative">
+              <div className="text-lg sm:text-2xl font-bold text-white mb-1 stat-number">
                 {stat.value}
               </div>
-              <div className="text-[#A0A0A0] text-sm mb-2">{stat.label}</div>
-              <div className="text-[#00C2FF] text-sm font-medium">{stat.change}</div>
+              <div className="text-[#A0A0A0] text-xs sm:text-sm mb-2 leading-tight">{stat.label}</div>
+              <div className="text-[#00C2FF] text-xs sm:text-sm font-medium">{stat.change}</div>
             </div>
           ))}
         </div>
 
+        {/* Section divider */}
+        <div className="section-divider"></div>
+        
         {/* Recent Activity Feed */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-xl font-bold text-white">Recent Activity</h3>
-            <button className="text-[#00C2FF] hover:text-[#7B2EFF] text-sm font-medium transition-colors">
+            <h3 className="text-lg sm:text-xl font-bold text-white gradient-text">Recent Activity</h3>
+            <button className="text-[#00C2FF] hover:text-[#7B2EFF] text-xs sm:text-sm font-medium transition-colors">
               View All
             </button>
           </div>
@@ -212,42 +216,45 @@ export default function Dashboard() {
           </div>
         </div>
 
+        {/* Section divider */}
+        <div className="section-divider purple"></div>
+        
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <button className="bg-[#111111] hover:bg-[#0A0A0A] border border-[#1E1E1E] rounded-lg p-4 text-left transition-all duration-200 card-glow group">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <button className="bg-[#111111]/80 hover:bg-[#0A0A0A] border border-[#1E1E1E] rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow dashboard-accent group noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
-              <Radio className="w-6 h-6 text-[#00C2FF] group-hover:scale-110 transition-transform" />
-              <ExternalLink className="w-4 h-4 text-[#A0A0A0]" />
+              <Radio className="w-5 h-5 sm:w-6 sm:h-6 text-[#00FF9C] group-hover:scale-110 transition-transform" />
+              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-[#A0A0A0]" />
             </div>
-            <div className="text-white font-medium">Check Pulse</div>
-            <div className="text-[#A0A0A0] text-sm">View cultural signals</div>
+            <div className="text-white font-medium text-sm sm:text-base">Check Pulse</div>
+            <div className="text-[#A0A0A0] text-xs sm:text-sm">View cultural signals</div>
           </button>
 
-          <button className="bg-[#111111] hover:bg-[#0A0A0A] border border-[#1E1E1E] rounded-lg p-4 text-left transition-all duration-200 card-glow group">
+          <button className="bg-[#111111]/80 hover:bg-[#0A0A0A] border border-[#1E1E1E] rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow dashboard-accent group noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
-              <TrendingUp className="w-6 h-6 text-[#00FF9C] group-hover:scale-110 transition-transform" />
-              <ExternalLink className="w-4 h-4 text-[#A0A0A0]" />
+              <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-[#C9A86A] group-hover:scale-110 transition-transform" />
+              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-[#A0A0A0]" />
             </div>
-            <div className="text-white font-medium">Atlanta Campaign</div>
-            <div className="text-[#A0A0A0] text-sm">Run geo-targeted push</div>
+            <div className="text-white font-medium text-sm sm:text-base">Atlanta Campaign</div>
+            <div className="text-[#A0A0A0] text-xs sm:text-sm">Run geo-targeted push</div>
           </button>
 
-          <button className="bg-[#111111] hover:bg-[#0A0A0A] border border-[#1E1E1E] rounded-lg p-4 text-left transition-all duration-200 card-glow group">
+          <button className="bg-[#111111]/80 hover:bg-[#0A0A0A] border border-[#FFB800] border-pulse rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow revenue-accent group noise-overlay relative">
             <div className="flex items-center justify-between mb-3">
-              <DollarSign className="w-6 h-6 text-[#FFB800] group-hover:scale-110 transition-transform" />
-              <ExternalLink className="w-4 h-4 text-[#A0A0A0]" />
+              <DollarSign className="w-5 h-5 sm:w-6 sm:h-6 text-[#FFB800] group-hover:scale-110 transition-transform" />
+              <span className="status-dot urgent"></span>
             </div>
-            <div className="text-white font-medium">Claim Revenue</div>
-            <div className="text-[#A0A0A0] text-sm">$4.5K unclaimed</div>
+            <div className="text-white font-medium text-sm sm:text-base">Claim Revenue</div>
+            <div className="text-[#FFB800] text-xs sm:text-sm font-medium">$4.5K unclaimed</div>
           </button>
 
-          <button className="bg-[#111111] hover:bg-[#0A0A0A] border border-[#1E1E1E] rounded-lg p-4 text-left transition-all duration-200 card-glow group">
+          <button className="btn-gradient p-3 sm:p-4 text-left transition-all duration-200 group text-white rounded-xl">
             <div className="flex items-center justify-between mb-3">
-              <Play className="w-6 h-6 text-[#7B2EFF] group-hover:scale-110 transition-transform" />
-              <ExternalLink className="w-4 h-4 text-[#A0A0A0]" />
+              <Play className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" />
+              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-white/80" />
             </div>
-            <div className="text-white font-medium">Run Strategy</div>
-            <div className="text-[#A0A0A0] text-sm">AI recommendations</div>
+            <div className="text-white font-medium text-sm sm:text-base">Run Strategy</div>
+            <div className="text-white/80 text-xs sm:text-sm">AI recommendations</div>
           </button>
         </div>
       </div>

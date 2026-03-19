@@ -36,7 +36,7 @@ const RevenueCard = ({ stream }: { stream: any }) => {
   };
 
   return (
-    <div className="bg-[#111111] rounded-lg p-6 card-glow border border-[#1E1E1E]">
+    <div className="bg-[#111111]/80 border-t-2 border-t-[#FFB800] rounded-lg p-4 sm:p-6 card-glow revenue-accent border border-[#1E1E1E] noise-overlay relative">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-3">
           <div 
@@ -96,7 +96,7 @@ const AlertCard = ({ alert }: { alert: any }) => {
   };
 
   return (
-    <div className={`bg-[#111111] rounded-lg p-6 card-glow border-l-4 ${getPriorityColor(alert.priority)}`}>
+    <div className={`bg-[#111111]/80 rounded-lg p-4 sm:p-6 card-glow border-l-4 ${getPriorityColor(alert.priority)} noise-overlay relative`}>
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
           <div className={`p-2 rounded-lg ${getPriorityColor(alert.priority).includes('danger') ? 'bg-[#FF3B3B]/20' : 

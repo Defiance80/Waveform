@@ -24,7 +24,51 @@ html, body {
 ::-webkit-scrollbar-thumb { background: #00C2FF; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #7B2EFF; }
 
-/* Waveform animation */
+/* Gradient border utility */
+.gradient-border-card {
+  position: relative;
+  background: #111111;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.gradient-border-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(0,194,255,0.3), rgba(123,46,255,0.3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Noise texture overlay */
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Animated gradient border */
+@keyframes gradient-rotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+/* Pulse border for urgent items */
+@keyframes border-pulse {
+  0%, 100% { border-color: rgba(255,184,0,0.3); }
+  50% { border-color: rgba(255,184,0,0.8); }
+}
+.border-pulse { animation: border-pulse 2s ease-in-out infinite; }
+
+/* Waveform animation - enhanced visibility */
 .waveform { display: flex; align-items: center; gap: 2px; }
 .waveform-bar {
   width: 3px;
@@ -33,17 +77,164 @@ html, body {
   animation: waveform 1.5s ease-in-out infinite;
 }
 @keyframes waveform {
-  0%, 100% { height: 6px; opacity: 0.4; }
+  0%, 100% { height: 6px; opacity: 0.08; }
   50% { height: 20px; opacity: 1; }
 }
 
-/* Glow hover on cards */
-.card-glow { transition: all 0.3s ease; }
-.card-glow:hover { box-shadow: 0 0 30px rgba(0, 194, 255, 0.15); }
+/* Enhanced card glow with module accent colors */
+.card-glow { 
+  transition: all 0.3s ease; 
+  position: relative;
+}
+.card-glow:hover { 
+  transform: scale(1.01);
+  box-shadow: 0 0 30px rgba(0, 194, 255, 0.15); 
+}
 
-/* Pulse dot */
+/* Dashboard accent */
+.card-glow.dashboard-accent:hover { 
+  box-shadow: 0 0 30px rgba(0, 194, 255, 0.2); 
+}
+
+/* Pulse accent */
+.card-glow.pulse-accent:hover { 
+  box-shadow: 0 0 30px rgba(0, 255, 156, 0.2); 
+}
+
+/* Momentum accent */
+.card-glow.momentum-accent:hover { 
+  box-shadow: 0 0 30px rgba(201, 168, 106, 0.2); 
+}
+
+/* Echo accent */
+.card-glow.echo-accent:hover { 
+  box-shadow: 0 0 30px rgba(123, 46, 255, 0.2); 
+}
+
+/* Revenue accent */
+.card-glow.revenue-accent:hover { 
+  box-shadow: 0 0 30px rgba(255, 184, 0, 0.2); 
+}
+
+/* Leverage accent */
+.card-glow.leverage-accent:hover { 
+  box-shadow: 0 0 30px rgba(255, 0, 110, 0.2); 
+}
+
+/* Stat numbers with glow */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 8px currentColor;
+}
+
+/* AI Insight card styling */
+.ai-insight-card {
+  background: #0D0D15;
+  border-left: 3px solid;
+  border-image: linear-gradient(135deg, #00C2FF, #7B2EFF) 1;
+  position: relative;
+}
+
+.ai-insight-card::before {
+  content: '✨';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  opacity: 0.6;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #FFFFFF, #E0E0E0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text.accent-cyan {
+  background: linear-gradient(135deg, #00C2FF, #FFFFFF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Section dividers */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 194, 255, 0.3), transparent);
+  margin: 2rem 0;
+}
+
+.section-divider.purple {
+  background: linear-gradient(90deg, transparent, rgba(123, 46, 255, 0.3), transparent);
+}
+
+/* Pulsing status indicators */
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(1.5); }
 }
 .animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* Animated gradient mesh for hero sections */
+@keyframes mesh-gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.hero-mesh {
+  background: linear-gradient(-45deg, 
+    rgba(0, 194, 255, 0.03), 
+    rgba(123, 46, 255, 0.03), 
+    rgba(0, 255, 156, 0.03), 
+    rgba(201, 168, 106, 0.03)
+  );
+  background-size: 400% 400%;
+  animation: mesh-gradient 15s ease infinite;
+}
+
+/* Status dots with colors */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.status-dot.active {
+  background: #00FF9C;
+  box-shadow: 0 0 8px rgba(0, 255, 156, 0.4);
+}
+
+.status-dot.urgent {
+  background: #FF3B3B;
+  box-shadow: 0 0 8px rgba(255, 59, 59, 0.4);
+}
+
+.status-dot.warning {
+  background: #FFB800;
+  box-shadow: 0 0 8px rgba(255, 184, 0, 0.4);
+}
+
+.status-dot.neutral {
+  background: #A0A0A0;
+}
+
+/* Button gradients */
+.btn-gradient {
+  background: linear-gradient(135deg, #00C2FF, #7B2EFF);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 194, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 35px rgba(0, 194, 255, 0.3);
+}

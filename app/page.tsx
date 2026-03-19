@@ -35,17 +35,17 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] relative overflow-hidden flex items-center justify-center">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
+      {/* Enhanced background pattern - more visible */}
+      <div className="absolute inset-0 opacity-[0.08]" style={{
         backgroundImage: `repeating-linear-gradient(90deg, #00C2FF 0px, transparent 1px, transparent 60px),
                           repeating-linear-gradient(0deg, #7B2EFF 0px, transparent 1px, transparent 60px)`
       }} />
       
       {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00C2FF]/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#7B2EFF]/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-[#00C2FF]/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-80 sm:h-80 bg-[#7B2EFF]/5 rounded-full blur-3xl" />
 
-      <div className="relative z-10 w-full max-w-md mx-4">
+      <div className="relative z-10 w-full max-w-md mx-4 px-4 sm:px-0">
         {/* Logo */}
         <div className="text-center mb-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
@@ -63,11 +63,11 @@ export default function LoginPage() {
         </div>
 
         {/* Login Card */}
-        <div className="bg-[#111111] border border-[#1E1E1E] rounded-2xl overflow-hidden">
+        <div className="bg-[#111111]/80 border border-[#1E1E1E] rounded-2xl overflow-hidden noise-overlay relative">
           {/* Gradient top bar */}
           <div className="h-1 bg-gradient-to-r from-[#00C2FF] via-[#3B82F6] to-[#7B2EFF]" />
           
-          <div className="p-6 sm:p-8">
+          <div className="p-4 sm:p-6 md:p-8 relative z-10">
             <p className="text-[#A0A0A0] text-sm text-center mb-6">
               See the motion before it becomes momentum.
             </p>
