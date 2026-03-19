@@ -2,13 +2,13 @@
 
 import React from 'react';
 
-interface WaveformLogoProps {
+interface SlapBoxLogoProps {
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   animated?: boolean;
 }
 
-export const WaveformLogo: React.FC<WaveformLogoProps> = ({ 
+export const SlapBoxLogo: React.FC<SlapBoxLogoProps> = ({ 
   size = 'md', 
   className = '',
   animated = false 
@@ -42,7 +42,7 @@ export const WaveformLogo: React.FC<WaveformLogoProps> = ({
           </filter>
         </defs>
 
-        {/* Waveform bars integrated into text */}
+        {/* SlapBox bars integrated into text */}
         <g className={animated ? 'animate-pulse' : ''}>
           {/* W */}
           <path
@@ -54,7 +54,7 @@ export const WaveformLogo: React.FC<WaveformLogoProps> = ({
             strokeLinejoin="round"
           />
           
-          {/* A with waveform peak */}
+          {/* A with slapbox peak */}
           <path
             d="M40 60 L45 20 L50 60 M42 45 L48 45"
             stroke="url(#textGradient)"
@@ -94,7 +94,7 @@ export const WaveformLogo: React.FC<WaveformLogoProps> = ({
             strokeLinejoin="round"
           />
           
-          {/* O with waveform circle */}
+          {/* O with slapbox circle */}
           <circle
             cx="135"
             cy="40"
@@ -125,7 +125,7 @@ export const WaveformLogo: React.FC<WaveformLogoProps> = ({
           />
         </g>
 
-        {/* Waveform visualization bars below text */}
+        {/* SlapBox visualization bars below text */}
         <g className="opacity-60">
           {[...Array(15)].map((_, i) => {
             const height = Math.random() * 8 + 2;
@@ -166,7 +166,7 @@ export const WaveformLogo: React.FC<WaveformLogoProps> = ({
             fill="url(#textGradient)"
             className="font-bold tracking-wider"
           >
-            WAVEFORM
+            SLAPBOX
           </text>
         </g>
       </svg>

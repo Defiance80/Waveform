@@ -205,7 +205,7 @@ export default function SettingsPage() {
                 <Crown className="w-6 h-6 text-[#C9A86A]" />
                 <div>
                   <div className="text-white font-semibold flex items-center">
-                    WAVEFORM {subscription.tier}
+                    SLAPBOX {subscription.tier}
                     <span className="ml-2 px-2 py-1 bg-[#C9A86A]/20 text-[#C9A86A] rounded-full text-xs font-medium">
                       Active
                     </span>
@@ -342,7 +342,7 @@ export default function SettingsPage() {
         <SettingsSection title="API Access">
           <div className="space-y-4">
             <p className="text-[#A0A0A0] text-sm">
-              Access WAVEFORM data programmatically with our REST API. Perfect for custom integrations and automation.
+              Access SLAPBOX data programmatically with our REST API. Perfect for custom integrations and automation.
             </p>
             
             <div>
@@ -392,7 +392,7 @@ export default function SettingsPage() {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="text-white font-medium">WAVEFORM</h4>
+                <h4 className="text-white font-medium">SLAPBOX</h4>
                 <p className="text-[#A0A0A0] text-sm">Cultural Intelligence OS</p>
               </div>
               <span className="px-3 py-1 bg-[#00C2FF]/20 text-[#00C2FF] rounded-full text-sm font-medium">
@@ -410,7 +410,7 @@ export default function SettingsPage() {
             <div className="border-t border-[#2A2A2A] pt-4 text-center text-xs text-[#A0A0A0]">
               Developed by <span className="text-[#C9A86A] font-medium">GoKoncentrate</span>
               <br />
-              © 2024 WAVEFORM. All rights reserved.
+              © 2024 SLAPBOX. All rights reserved.
             </div>
           </div>
         </SettingsSection>

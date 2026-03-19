@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'WAVEFORM - Cultural Intelligence OS',
+  title: 'SLAPBOX - Cultural Intelligence OS',
   description: 'See the motion before it becomes momentum.',
   icons: {
     icon: '/favicon.ico',

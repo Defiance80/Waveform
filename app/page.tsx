@@ -19,7 +19,7 @@ export default function LoginPage() {
     await new Promise(resolve => setTimeout(resolve, 800));
     
     if (email && password) {
-      localStorage.setItem('waveform_user', JSON.stringify({ email, name: 'Kendrick Cole' }));
+      localStorage.setItem('slapbox_user', JSON.stringify({ email, name: 'Kendrick Cole' }));
       router.push('/dashboard');
     } else {
       setError('Please enter your credentials');
@@ -50,7 +50,7 @@ export default function LoginPage() {
         <div className="text-center mb-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
             <span className="bg-gradient-to-r from-[#00C2FF] via-[#3B82F6] to-[#7B2EFF] bg-clip-text text-transparent">
-              WAVEFORM
+              SLAPBOX
             </span>
           </h1>
           <div className="flex items-center justify-center gap-1.5 mt-3">
@@ -148,7 +148,7 @@ export default function LoginPage() {
               </p>
               <button
                 type="button"
-                onClick={() => fillCredentials('demo@waveform.ai', 'demo123')}
+                onClick={() => fillCredentials('demo@slapbox.ai', 'demo123')}
                 className="w-full p-3 bg-[#0A0A0A] hover:bg-[#151515] border border-[#1E1E1E] hover:border-[#00C2FF]/30 rounded-xl transition-all duration-200 text-left group cursor-pointer"
               >
                 <div className="flex items-center justify-between">
@@ -156,7 +156,7 @@ export default function LoginPage() {
                     <p className="text-sm font-medium text-white group-hover:text-[#00C2FF] transition-colors">
                       Demo Account
                     </p>
-                    <p className="text-xs text-[#555] font-mono mt-0.5">demo@waveform.ai</p>
+                    <p className="text-xs text-[#555] font-mono mt-0.5">demo@slapbox.ai</p>
                   </div>
                   <span className="text-xs text-[#555] font-mono">demo123</span>
                 </div>

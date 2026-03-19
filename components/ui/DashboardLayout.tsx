@@ -34,7 +34,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
   const isActive = (href: string) => href === '/dashboard' ? pathname === '/dashboard' : pathname?.startsWith(href);
 
   const handleLogout = () => {
-    localStorage.removeItem('waveform_user');
+    localStorage.removeItem('slapbox_user');
     router.push('/');
   };
 
@@ -47,11 +47,11 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
           <div className="flex items-center justify-between">
             {!collapsed && (
               <h2 className="text-xl font-extrabold tracking-tight">
-                <span className="bg-gradient-to-r from-[#00C2FF] to-[#7B2EFF] bg-clip-text text-transparent">WAVEFORM</span>
+                <span className="bg-gradient-to-r from-[#00C2FF] to-[#7B2EFF] bg-clip-text text-transparent">SLAPBOX</span>
               </h2>
             )}
             {collapsed && (
-              <span className="text-lg font-extrabold bg-gradient-to-r from-[#00C2FF] to-[#7B2EFF] bg-clip-text text-transparent">W</span>
+              <span className="text-lg font-extrabold bg-gradient-to-r from-[#00C2FF] to-[#7B2EFF] bg-clip-text text-transparent">S</span>
             )}
             <button onClick={() => setCollapsed(!collapsed)} className="p-1.5 rounded-lg text-white hover:text-white hover:bg-[#111111] transition-all">
               <ChevronLeft size={16} className={`transition-transform ${collapsed ? 'rotate-180' : ''}`} />
@@ -102,7 +102,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
           <div className="fixed left-0 top-0 bottom-0 w-72 bg-[#0A0A0A] border-r border-[#1E1E1E]">
             <div className="flex items-center justify-between p-4 border-b border-[#1E1E1E]">
               <h2 className="text-xl font-extrabold">
-                <span className="bg-gradient-to-r from-[#00C2FF] to-[#7B2EFF] bg-clip-text text-transparent">WAVEFORM</span>
+                <span className="bg-gradient-to-r from-[#00C2FF] to-[#7B2EFF] bg-clip-text text-transparent">SLAPBOX</span>
               </h2>
               <button onClick={() => setSidebarOpen(false)} className="p-2 text-white hover:text-white">
                 <X size={20} />
@@ -155,7 +155,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
                   <div className="absolute right-0 mt-2 w-48 bg-[#111] border border-[#1E1E1E] rounded-xl shadow-xl z-50 overflow-hidden">
                     <div className="p-3 border-b border-[#1E1E1E]">
                       <p className="text-sm font-medium text-white">Kendrick Cole</p>
-                      <p className="text-xs text-[#A0A0A0]">demo@waveform.ai</p>
+                      <p className="text-xs text-[#A0A0A0]">demo@slapbox.ai</p>
                     </div>
                     <button onClick={handleLogout} className="w-full text-left px-3 py-2.5 text-sm text-white hover:text-white hover:bg-[#1E1E1E] flex items-center gap-2 transition-colors">
                       <LogOut size={14} /> Sign Out
@@ -175,7 +175,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
         {/* Footer */}
         <footer className="hidden md:block border-t border-[#1E1E1E] px-4 py-2">
           <div className="flex justify-between text-xs text-[#666666]">
-            <span>© 2026 WAVEFORM</span>
+            <span>© 2026 SLAPBOX</span>
             <span>Developed by GoKoncentrate</span>
           </div>
         </footer>

@@ -1,8 +1,8 @@
-# WAVEFORM
+# SLAPBOX
 
 > "See the motion before it becomes momentum."
 
-WAVEFORM is a Cultural Intelligence OS designed for music artists and labels. This premium dark-mode SaaS platform combines hip-hop culture with high-end tech aesthetics to deliver real-time insights, strategic recommendations, and revenue intelligence.
+SLAPBOX is a Cultural Intelligence OS designed for music artists and labels. This premium dark-mode SaaS platform combines hip-hop culture with high-end tech aesthetics to deliver real-time insights, strategic recommendations, and revenue intelligence.
 
 ## 🎯 Features
 
@@ -27,7 +27,7 @@ WAVEFORM is a Cultural Intelligence OS designed for music artists and labels. Th
 ## 🚀 Demo
 
 **Live Demo Credentials:**
-- Email: `demo@waveform.ai`
+- Email: `demo@slapbox.ai`
 - Password: `demo123`
 
 ## 🛠️ Tech Stack
