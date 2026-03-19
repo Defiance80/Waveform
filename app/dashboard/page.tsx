@@ -12,7 +12,9 @@ import {
   MapPin, 
   Brain,
   ExternalLink,
-  Play
+  Play,
+  Calendar,
+  Send
 } from 'lucide-react';
 import { momentumData, quickStats, recentActivity, artistProfile, dashboardWidgets } from '@/data/mockData';
 
@@ -179,6 +181,73 @@ export default function Dashboard() {
                   Your sound is resonating in underground Atlanta circles tied to nightlife DJs. 
                   Strike within 48 hours.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* New Mini-Widgets */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+          {/* Street Buzz Mini-Widget */}
+          <div className="bg-[#111111]/80 border border-[#1E1E1E] rounded-xl p-4 card-glow dashboard-accent noise-overlay relative">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-3">
+                <TrendingUp className="w-5 h-5 text-[#00FF9C]" />
+                <h3 className="text-lg font-bold text-white">Street Buzz</h3>
+              </div>
+              <button className="text-[#00FF9C] hover:text-white text-xs">View All</button>
+            </div>
+            <div className="space-y-2">
+              <div className="text-sm text-[#A0A0A0] mb-2">Top Trending Cities</div>
+              {dashboardWidgets.streetBuzz.topCities.map((city, index) => (
+                <div key={city} className="flex items-center justify-between">
+                  <span className="text-sm text-white">#{index + 1} {city}</span>
+                  <div className="w-2 h-2 rounded-full bg-[#00FF9C] animate-pulse-dot"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Upcoming Events Mini-Widget */}
+          <div className="bg-[#111111]/80 border border-[#1E1E1E] rounded-xl p-4 card-glow dashboard-accent noise-overlay relative">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-3">
+                <Calendar className="w-5 h-5 text-[#FFB800]" />
+                <h3 className="text-lg font-bold text-white">Upcoming Events</h3>
+              </div>
+              <button className="text-[#FFB800] hover:text-white text-xs">View All</button>
+            </div>
+            <div className="space-y-3">
+              {dashboardWidgets.upcomingEvents.map((event, index) => (
+                <div key={index} className="bg-[#1E1E1E] rounded-lg p-3">
+                  <div className="font-medium text-white text-sm">{event.name}</div>
+                  <div className="text-xs text-[#A0A0A0] mt-1">{event.date} • {event.venue}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Submission Status Mini-Widget */}
+          <div className="bg-[#111111]/80 border border-[#1E1E1E] rounded-xl p-4 card-glow dashboard-accent noise-overlay relative">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-3">
+                <Send className="w-5 h-5 text-[#00C2FF]" />
+                <h3 className="text-lg font-bold text-white">Submissions</h3>
+              </div>
+              <button className="text-[#00C2FF] hover:text-white text-xs">View All</button>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-[#FFB800]">Pending</span>
+                <span className="text-lg font-bold text-white">{dashboardWidgets.submissionStatus.pending}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-[#00FF9C]">Accepted</span>
+                <span className="text-lg font-bold text-white">{dashboardWidgets.submissionStatus.accepted}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-[#7B2EFF]">Published</span>
+                <span className="text-lg font-bold text-white">{dashboardWidgets.submissionStatus.published}</span>
               </div>
             </div>
           </div>
