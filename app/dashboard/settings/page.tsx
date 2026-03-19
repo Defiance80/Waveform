@@ -19,19 +19,19 @@ import {
 } from 'lucide-react';
 
 const SettingsSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="bg-primary-secondary rounded-lg p-6 card-glow border border-gray-800">
-    <h3 className="text-lg font-semibold text-text-primary mb-4">{title}</h3>
+  <div className="bg-[#111111] rounded-lg p-6 card-glow border border-[#1E1E1E]">
+    <h3 className="text-lg font-semibold text-white mb-4">{title}</h3>
     {children}
   </div>
 );
 
 const Toggle = ({ enabled, onChange, label }: { enabled: boolean; onChange: (value: boolean) => void; label: string }) => (
   <div className="flex items-center justify-between py-2">
-    <span className="text-text-primary">{label}</span>
+    <span className="text-white">{label}</span>
     <button
       onClick={() => onChange(!enabled)}
       className={`relative w-12 h-6 rounded-full transition-colors ${
-        enabled ? 'bg-accent-blue' : 'bg-gray-700'
+        enabled ? 'bg-[#00C2FF]' : 'bg-gray-700'
       }`}
     >
       <div
@@ -96,11 +96,11 @@ export default function SettingsPage() {
 
   const getPlatformStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'text-status-success bg-status-success/20';
-      case 'limited': return 'text-status-warning bg-status-warning/20';
-      case 'pending': return 'text-accent-blue bg-accent-blue/20';
-      case 'disconnected': return 'text-status-danger bg-status-danger/20';
-      default: return 'text-text-secondary bg-text-secondary/20';
+      case 'active': return 'text-[#00FF9C] bg-[#00FF9C]/20';
+      case 'limited': return 'text-[#FFB800] bg-[#FFB800]/20';
+      case 'pending': return 'text-[#00C2FF] bg-[#00C2FF]/20';
+      case 'disconnected': return 'text-[#FF3B3B] bg-[#FF3B3B]/20';
+      default: return 'text-[#A0A0A0] bg-text-secondary/20';
     }
   };
 
@@ -122,8 +122,8 @@ export default function SettingsPage() {
       <div className="p-6 space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-2xl font-bold text-text-primary mb-2">Settings</h1>
-          <p className="text-text-secondary">Manage your account, preferences, and integrations</p>
+          <h1 className="text-2xl font-bold text-white mb-2">Settings</h1>
+          <p className="text-[#A0A0A0]">Manage your account, preferences, and integrations</p>
         </div>
 
         {/* Profile Information */}
@@ -131,32 +131,32 @@ export default function SettingsPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-text-primary mb-2">Artist Name</label>
+                <label className="block text-sm font-medium text-white mb-2">Artist Name</label>
                 <input
                   type="text"
                   value={profile.name}
                   onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-                  className="input-dark w-full"
+                  className="bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-white placeholder-[#555] text-sm focus:outline-none focus:ring-2 focus:ring-[#00C2FF]/50 transition-all w-full"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-text-primary mb-2">Email</label>
+                <label className="block text-sm font-medium text-white mb-2">Email</label>
                 <input
                   type="email"
                   value={profile.email}
                   onChange={(e) => setProfile({ ...profile, email: e.target.value })}
-                  className="input-dark w-full"
+                  className="bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-white placeholder-[#555] text-sm focus:outline-none focus:ring-2 focus:ring-[#00C2FF]/50 transition-all w-full"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-text-primary mb-2">Genre</label>
+                <label className="block text-sm font-medium text-white mb-2">Genre</label>
                 <select
                   value={profile.genre}
                   onChange={(e) => setProfile({ ...profile, genre: e.target.value })}
-                  className="input-dark w-full"
+                  className="bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-white placeholder-[#555] text-sm focus:outline-none focus:ring-2 focus:ring-[#00C2FF]/50 transition-all w-full"
                 >
                   <option value="Hip-Hop">Hip-Hop</option>
                   <option value="R&B">R&B</option>
@@ -167,29 +167,29 @@ export default function SettingsPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-text-primary mb-2">Location</label>
+                <label className="block text-sm font-medium text-white mb-2">Location</label>
                 <input
                   type="text"
                   value={profile.location}
                   onChange={(e) => setProfile({ ...profile, location: e.target.value })}
-                  className="input-dark w-full"
+                  className="bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-white placeholder-[#555] text-sm focus:outline-none focus:ring-2 focus:ring-[#00C2FF]/50 transition-all w-full"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-text-primary mb-2">Bio</label>
+              <label className="block text-sm font-medium text-white mb-2">Bio</label>
               <textarea
                 value={profile.bio}
                 onChange={(e) => setProfile({ ...profile, bio: e.target.value })}
-                className="input-dark w-full h-24 resize-none"
+                className="bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-white placeholder-[#555] text-sm focus:outline-none focus:ring-2 focus:ring-[#00C2FF]/50 transition-all w-full h-24 resize-none"
                 placeholder="Tell us about your music and artistic journey..."
               />
             </div>
 
             <button
               onClick={handleProfileSave}
-              className="btn-primary flex items-center"
+              className="bg-gradient-to-r from-[#00C2FF] to-[#7B2EFF] text-white font-semibold py-3 px-6 rounded-xl hover:opacity-90 transition-all flex items-center"
             >
               <Save className="w-4 h-4 mr-2" />
               Save Changes
@@ -200,33 +200,33 @@ export default function SettingsPage() {
         {/* Subscription */}
         <SettingsSection title="Subscription">
           <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-gradient-to-r from-accent-blue/10 to-accent-purple/10 border border-accent-blue/20 rounded-lg">
+            <div className="flex items-center justify-between p-4 bg-gradient-to-r from-accent-blue/10 to-accent-purple/10 border border-[#00C2FF]/20 rounded-lg">
               <div className="flex items-center space-x-3">
-                <Crown className="w-6 h-6 text-accent-gold" />
+                <Crown className="w-6 h-6 text-[#C9A86A]" />
                 <div>
-                  <div className="text-text-primary font-semibold flex items-center">
+                  <div className="text-white font-semibold flex items-center">
                     WAVEFORM {subscription.tier}
-                    <span className="ml-2 px-2 py-1 bg-accent-gold/20 text-accent-gold rounded-full text-xs font-medium">
+                    <span className="ml-2 px-2 py-1 bg-[#C9A86A]/20 text-[#C9A86A] rounded-full text-xs font-medium">
                       Active
                     </span>
                   </div>
-                  <div className="text-text-secondary text-sm">
+                  <div className="text-[#A0A0A0] text-sm">
                     {subscription.billingCycle} • Next billing: {subscription.nextBilling}
                   </div>
                 </div>
               </div>
-              <button className="bg-primary-bg hover:bg-gray-900 border border-gray-700 text-text-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+              <button className="bg-[#0A0A0A] hover:bg-gray-900 border border-gray-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                 Manage
               </button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h4 className="text-text-primary font-medium mb-3">Included Features</h4>
+                <h4 className="text-white font-medium mb-3">Included Features</h4>
                 <ul className="space-y-2">
                   {subscription.features.map((feature, index) => (
-                    <li key={index} className="flex items-center text-sm text-text-secondary">
-                      <CheckCircle className="w-4 h-4 text-status-success mr-2" />
+                    <li key={index} className="flex items-center text-sm text-[#A0A0A0]">
+                      <CheckCircle className="w-4 h-4 text-[#00FF9C] mr-2" />
                       {feature}
                     </li>
                   ))}
@@ -234,19 +234,19 @@ export default function SettingsPage() {
               </div>
               
               <div>
-                <h4 className="text-text-primary font-medium mb-3">Usage This Month</h4>
+                <h4 className="text-white font-medium mb-3">Usage This Month</h4>
                 <div className="space-y-3">
                   <div className="flex justify-between text-sm">
-                    <span className="text-text-secondary">API Calls</span>
-                    <span className="text-text-primary">2,847 / ∞</span>
+                    <span className="text-[#A0A0A0]">API Calls</span>
+                    <span className="text-white">2,847 / ∞</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-text-secondary">Data Points</span>
-                    <span className="text-text-primary">47,392 / ∞</span>
+                    <span className="text-[#A0A0A0]">Data Points</span>
+                    <span className="text-white">47,392 / ∞</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-text-secondary">Reports Generated</span>
-                    <span className="text-text-primary">23 / ∞</span>
+                    <span className="text-[#A0A0A0]">Reports Generated</span>
+                    <span className="text-white">23 / ∞</span>
                   </div>
                 </div>
               </div>
@@ -293,17 +293,17 @@ export default function SettingsPage() {
         {/* Connected Platforms */}
         <SettingsSection title="Connected Platforms">
           <div className="space-y-4">
-            <p className="text-text-secondary text-sm">
+            <p className="text-[#A0A0A0] text-sm">
               Connect your music platforms to unlock comprehensive cultural intelligence and revenue tracking.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {Object.entries(platforms).map(([platform, details]) => (
-                <div key={platform} className="flex items-center justify-between p-4 bg-primary-bg rounded-lg border border-gray-800">
+                <div key={platform} className="flex items-center justify-between p-4 bg-[#0A0A0A] rounded-lg border border-[#1E1E1E]">
                   <div className="flex items-center space-x-3">
                     {getPlatformIcon(platform)}
                     <div>
-                      <div className="text-text-primary font-medium capitalize">
+                      <div className="text-white font-medium capitalize">
                         {platform === 'appleMusic' ? 'Apple Music' : platform}
                       </div>
                       <div className={`text-xs px-2 py-1 rounded-full font-medium ${getPlatformStatusColor(details.status)}`}>
@@ -314,8 +314,8 @@ export default function SettingsPage() {
                   
                   <button className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
                     details.connected
-                      ? 'bg-status-danger/20 text-status-danger hover:bg-status-danger/30'
-                      : 'bg-accent-blue/20 text-accent-blue hover:bg-accent-blue/30'
+                      ? 'bg-[#FF3B3B]/20 text-[#FF3B3B] hover:bg-[#FF3B3B]/30'
+                      : 'bg-[#00C2FF]/20 text-[#00C2FF] hover:bg-[#00C2FF]/30'
                   }`}>
                     {details.connected ? 'Disconnect' : 'Connect'}
                   </button>
@@ -323,12 +323,12 @@ export default function SettingsPage() {
               ))}
             </div>
 
-            <div className="bg-accent-blue/10 border border-accent-blue/20 rounded-lg p-4">
+            <div className="bg-[#00C2FF]/10 border border-[#00C2FF]/20 rounded-lg p-4">
               <div className="flex items-start space-x-3">
-                <Zap className="w-5 h-5 text-accent-blue mt-1" />
+                <Zap className="w-5 h-5 text-[#00C2FF] mt-1" />
                 <div>
-                  <h4 className="text-text-primary font-medium mb-1">Connect More for Better Intelligence</h4>
-                  <p className="text-text-secondary text-sm">
+                  <h4 className="text-white font-medium mb-1">Connect More for Better Intelligence</h4>
+                  <p className="text-[#A0A0A0] text-sm">
                     Each connected platform increases the accuracy of your cultural intelligence by 15-20%. 
                     We recommend connecting at least 3 major platforms for comprehensive tracking.
                   </p>
@@ -341,22 +341,22 @@ export default function SettingsPage() {
         {/* API Access */}
         <SettingsSection title="API Access">
           <div className="space-y-4">
-            <p className="text-text-secondary text-sm">
+            <p className="text-[#A0A0A0] text-sm">
               Access WAVEFORM data programmatically with our REST API. Perfect for custom integrations and automation.
             </p>
             
             <div>
-              <label className="block text-sm font-medium text-text-primary mb-2">API Key</label>
+              <label className="block text-sm font-medium text-white mb-2">API Key</label>
               <div className="flex items-center space-x-2">
                 <input
                   type={showApiKey ? 'text' : 'password'}
                   value="wf_live_8a7b9c2d1e3f4g5h6i7j8k9l0m1n2o3p"
                   readOnly
-                  className="input-dark flex-1"
+                  className="bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl px-4 py-3 text-white placeholder-[#555] text-sm focus:outline-none focus:ring-2 focus:ring-[#00C2FF]/50 transition-all flex-1"
                 />
                 <button
                   onClick={() => setShowApiKey(!showApiKey)}
-                  className="p-3 bg-primary-bg hover:bg-gray-900 border border-gray-700 rounded-lg text-text-secondary hover:text-text-primary transition-colors"
+                  className="p-3 bg-[#0A0A0A] hover:bg-gray-900 border border-gray-700 rounded-lg text-[#A0A0A0] hover:text-white transition-colors"
                 >
                   {showApiKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -364,24 +364,24 @@ export default function SettingsPage() {
             </div>
 
             <div className="flex items-center space-x-2 text-sm">
-              <Link className="w-4 h-4 text-accent-blue" />
-              <a href="#" className="text-accent-blue hover:text-accent-purple transition-colors">
+              <Link className="w-4 h-4 text-[#00C2FF]" />
+              <a href="#" className="text-[#00C2FF] hover:text-[#7B2EFF] transition-colors">
                 View API Documentation
               </a>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="text-center p-3 bg-primary-bg rounded-lg border border-gray-800">
-                <div className="text-lg font-bold text-text-primary">2,847</div>
-                <div className="text-xs text-text-secondary">API Calls This Month</div>
+              <div className="text-center p-3 bg-[#0A0A0A] rounded-lg border border-[#1E1E1E]">
+                <div className="text-lg font-bold text-white">2,847</div>
+                <div className="text-xs text-[#A0A0A0]">API Calls This Month</div>
               </div>
-              <div className="text-center p-3 bg-primary-bg rounded-lg border border-gray-800">
-                <div className="text-lg font-bold text-text-primary">99.9%</div>
-                <div className="text-xs text-text-secondary">Uptime</div>
+              <div className="text-center p-3 bg-[#0A0A0A] rounded-lg border border-[#1E1E1E]">
+                <div className="text-lg font-bold text-white">99.9%</div>
+                <div className="text-xs text-[#A0A0A0]">Uptime</div>
               </div>
-              <div className="text-center p-3 bg-primary-bg rounded-lg border border-gray-800">
-                <div className="text-lg font-bold text-text-primary">47ms</div>
-                <div className="text-xs text-text-secondary">Avg Response Time</div>
+              <div className="text-center p-3 bg-[#0A0A0A] rounded-lg border border-[#1E1E1E]">
+                <div className="text-lg font-bold text-white">47ms</div>
+                <div className="text-xs text-[#A0A0A0]">Avg Response Time</div>
               </div>
             </div>
           </div>
@@ -392,23 +392,23 @@ export default function SettingsPage() {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="text-text-primary font-medium">WAVEFORM</h4>
-                <p className="text-text-secondary text-sm">Cultural Intelligence OS</p>
+                <h4 className="text-white font-medium">WAVEFORM</h4>
+                <p className="text-[#A0A0A0] text-sm">Cultural Intelligence OS</p>
               </div>
-              <span className="px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-sm font-medium">
+              <span className="px-3 py-1 bg-[#00C2FF]/20 text-[#00C2FF] rounded-full text-sm font-medium">
                 v2.1.4
               </span>
             </div>
 
-            <div className="text-sm text-text-secondary space-y-1">
+            <div className="text-sm text-[#A0A0A0] space-y-1">
               <p>• Real-time cultural signal processing</p>
               <p>• AI-powered strategic recommendations</p>
               <p>• Cross-platform revenue intelligence</p>
               <p>• Geographic momentum tracking</p>
             </div>
 
-            <div className="border-t border-gray-800 pt-4 text-center text-xs text-text-secondary">
-              Developed by <span className="text-accent-gold font-medium">GoKoncentrate</span>
+            <div className="border-t border-[#1E1E1E] pt-4 text-center text-xs text-[#A0A0A0]">
+              Developed by <span className="text-[#C9A86A] font-medium">GoKoncentrate</span>
               <br />
               © 2024 WAVEFORM. All rights reserved.
             </div>
