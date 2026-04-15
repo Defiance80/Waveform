@@ -2,510 +2,285 @@
 
 import React, { useState } from 'react';
 import { DashboardLayout } from '@/components/ui/DashboardLayout';
-import { 
-  TrendingUp, 
-  Radio, 
-  Zap, 
-  DollarSign, 
-  ArrowUp, 
-  Clock, 
-  MapPin, 
-  Brain,
-  ExternalLink,
-  Play,
-  Calendar,
-  Send,
-  Heart,
-  Eye,
-  ChevronDown,
-  Flame
+import {
+  TrendingUp, Zap, DollarSign, ArrowUp,
+  MapPin, Brain, ExternalLink, Calendar, Send,
+  Eye, Flame, Search, Loader2, BarChart2, Youtube,
+  MessageSquare, RefreshCw
 } from 'lucide-react';
-import { momentumData, quickStats, recentActivity, artistProfile, dashboardWidgets } from '@/data/mockData';
+import { momentumData, quickStats, recentActivity } from '@/data/mockData';
 
 const MomentumGauge = ({ score, change }: { score: number; change: number }) => {
-  const circumference = 2 * Math.PI * 45;
-  const strokeDasharray = circumference;
-  const strokeDashoffset = circumference - (score / 100) * circumference;
-
+  const c = 2 * Math.PI * 45;
   return (
-    <div className="relative w-32 h-32">
-      <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
-        <circle
-          cx="50"
-          cy="50"
-          r="45"
-          stroke="rgba(255,255,255,0.1)"
-          strokeWidth="8"
-          fill="transparent"
-        />
-        <circle
-          cx="50"
-          cy="50"
-          r="45"
-          stroke="url(#gaugeGradient)"
-          strokeWidth="8"
-          fill="transparent"
-          strokeDasharray={strokeDasharray}
-          strokeDashoffset={strokeDashoffset}
-          strokeLinecap="round"
-          className="transition-all duration-1000 ease-out"
-        />
+    <div className="relative w-28 h-28">
+      <svg className="w-28 h-28 -rotate-90" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" stroke="rgba(255,255,255,0.08)" strokeWidth="8" fill="transparent" />
+        <circle cx="50" cy="50" r="45" stroke="url(#gG)" strokeWidth="8" fill="transparent"
+          strokeDasharray={c} strokeDashoffset={c - (score / 100) * c} strokeLinecap="round" />
         <defs>
-          <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#00C2FF" />
-            <stop offset="100%" stopColor="#7B2EFF" />
+          <linearGradient id="gG" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#00C2FF" /><stop offset="100%" stopColor="#7B2EFF" />
           </linearGradient>
         </defs>
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <div className="text-2xl font-bold text-white">{score}</div>
-        <div className="text-xs text-[#00FF9C] flex items-center">
-          <ArrowUp className="w-3 h-3 mr-1" />
-          +{change}
-        </div>
+        <div className="text-xs text-[#00FF9C] flex items-center gap-0.5"><ArrowUp size={11} />+{change}</div>
       </div>
     </div>
   );
 };
 
-const ActivityCard = ({ activity }: { activity: any }) => {
-  const getIcon = (type: string) => {
-    switch (type) {
-      case 'podcast': return <Radio className="w-4 h-4" />;
-      case 'social': return <Zap className="w-4 h-4" />;
-      case 'revenue': return <DollarSign className="w-4 h-4" />;
-      case 'geo': return <MapPin className="w-4 h-4" />;
-      default: return <Clock className="w-4 h-4" />;
-    }
+type ScanResult = { platform: 'YouTube' | 'Reddit' | 'TikTok'; title: string; views: string; match: number; rank: number; };
+
+const mockResults: ScanResult[] = [
+  { platform: 'YouTube', title: 'How __INDUSTRY__ Is Changing in 2026', views: '2.4M', match: 91, rank: 1 },
+  { platform: 'TikTok', title: 'Insider secrets nobody in __INDUSTRY__ talks about', views: '8.1M', match: 87, rank: 2 },
+  { platform: 'Reddit', title: 'What actually moves the needle in __INDUSTRY__', views: '247K', match: 82, rank: 3 },
+  { platform: 'YouTube', title: 'I tried the top __INDUSTRY__ strategy for 30 days', views: '1.8M', match: 78, rank: 4 },
+  { platform: 'TikTok', title: 'POV: Running a real __INDUSTRY__ business in 2026', views: '5.3M', match: 74, rank: 5 },
+];
+
+const TrendScanner = () => {
+  const [industry, setIndustry] = useState('');
+  const [scanning, setScanning] = useState(false);
+  const [scanned, setScanned] = useState(false);
+  const [results, setResults] = useState<ScanResult[]>([]);
+
+  const scan = () => {
+    if (!industry.trim()) return;
+    setScanning(true); setScanned(false);
+    setTimeout(() => {
+      setResults(mockResults.map(r => ({ ...r, title: r.title.split('__INDUSTRY__').join(industry) })));
+      setScanning(false); setScanned(true);
+    }, 2200);
   };
 
-  const getColor = (impact: string) => {
-    switch (impact) {
-      case 'High': return 'border-l-[#00FF9C]';
-      case 'Medium': return 'border-l-[#00C2FF]';
-      default: return 'border-l-[#A0A0A0]';
-    }
+  const PlatformTag = ({ p }: { p: string }) => {
+    if (p === 'YouTube') return <><Youtube size={10} className="text-[#FF3B3B]" /><span className="text-[10px] text-[#555]">YouTube</span></>;
+    if (p === 'TikTok') return <><span className="text-[10px]">♪</span><span className="text-[10px] text-[#555]">TikTok</span></>;
+    return <><MessageSquare size={10} className="text-[#FF6314]" /><span className="text-[10px] text-[#555]">Reddit</span></>;
   };
 
   return (
-    <div className={`bg-[#141414]/80 rounded-lg p-3 sm:p-4 border-l-4 ${getColor(activity.impact)} card-glow dashboard-accent noise-overlay relative`}>
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex items-start space-x-3 min-w-0 flex-1">
-          <div className="p-2 bg-[#0A0A0A] rounded-lg text-[#00C2FF] flex-shrink-0">
-            {getIcon(activity.type)}
-          </div>
-          <div className="min-w-0 flex-1">
-            <h4 className="font-medium text-white text-sm sm:text-base truncate">{activity.title}</h4>
-            <p className="text-xs sm:text-sm text-[#A0A0A0] mt-1 leading-relaxed">{activity.description}</p>
-            <span className="text-xs text-[#A0A0A0] mt-1 block">{activity.time}</span>
-          </div>
+    <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-4 sm:p-5">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <Flame size={17} className="text-[#FF3B3B]" />
+          <h2 className="text-base font-bold text-white">Trending in Your Industry</h2>
+          <span className="hidden sm:inline text-[10px] px-2 py-0.5 rounded-full bg-[#FF3B3B18] text-[#FF3B3B] font-semibold">Reddit · YouTube · TikTok</span>
         </div>
-        <span className={`px-2 py-1 rounded-full text-xs font-medium flex-shrink-0 ${
-          activity.impact === 'High' 
-            ? 'bg-[#00FF9C]/20 text-[#00FF9C]'
-            : activity.impact === 'Medium'
-            ? 'bg-[#00C2FF]/20 text-[#00C2FF]'
-            : 'bg-[#A0A0A0]/20 text-[#A0A0A0]'
-        }`}>
-          {activity.impact}
-        </span>
+        {scanned && <button onClick={() => { setScanned(false); setResults([]); setIndustry(''); }} className="flex items-center gap-1 text-[10px] text-[#555] hover:text-[#888]"><RefreshCw size={10} /> Reset</button>}
       </div>
-    </div>
-  );
-};
 
-/* ── Trending Now Video Player ── */
+      <div className="flex gap-2 mb-4">
+        <div className="relative flex-1">
+          <Search size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#555] pointer-events-none" />
+          <input type="text" value={industry} onChange={e => setIndustry(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && scan()}
+            placeholder="Type your industry — e.g. Fitness, Streetwear, Food & Bev, Real Estate..."
+            className="w-full bg-[#0A0A0A] border border-[#2A2A2A] text-white rounded-xl pl-9 pr-4 py-2.5 text-sm placeholder-[#3A3A3A] focus:outline-none focus:border-[#00C2FF] transition-colors" />
+        </div>
+        <button onClick={scan} disabled={!industry.trim() || scanning}
+          className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold text-black bg-[#00C2FF] hover:bg-[#00AADD] transition-all disabled:opacity-40 flex-shrink-0">
+          {scanning ? <Loader2 size={13} className="animate-spin" /> : <Search size={13} />}
+          {scanning ? 'Scanning...' : 'Scan'}
+        </button>
+      </div>
 
-const trendingVideos = {
-  myHottest: {
-    main: {
-      title: "Midnight on Crenshaw (Official Video)",
-      artist: "Kendrick Cole",
-      views: "2.4M",
-      likes: "187K",
-      uploadDate: "Mar 12, 2024",
-      rank: 1,
-    },
-    upNext: [
-      { title: "Studio Session pt. 3", artist: "Kendrick Cole", views: "1.1M", rank: 2 },
-      { title: "West Side Story (Freestyle)", artist: "Kendrick Cole", views: "890K", rank: 3 },
-      { title: "SlapBox Cypher", artist: "Kendrick Cole ft. Blxst", views: "674K", rank: 4 },
-      { title: "LA Nights (Acoustic)", artist: "Kendrick Cole", views: "412K", rank: 5 },
-    ],
-  },
-  localTrending: {
-    main: {
-      title: "Die Hard (Official Video)",
-      artist: "Roddy Ricch",
-      views: "18.7M",
-      likes: "1.2M",
-      uploadDate: "Feb 28, 2024",
-      rank: 1,
-    },
-    upNext: [
-      { title: "Chosen", artist: "Blxst ft. Tyga", views: "9.3M", rank: 2 },
-      { title: "Hussle & Motivate (Legacy)", artist: "Nipsey Hussle", views: "7.8M", rank: 3 },
-      { title: "South Central Love", artist: "G Perico", views: "4.1M", rank: 4 },
-      { title: "Larry's Diaries", artist: "Larry June", views: "3.6M", rank: 5 },
-    ],
-  },
-};
-
-const cities = [
-  "Los Angeles, CA", "Long Beach, CA", "Compton, CA", "Sacramento, CA",
-  "San Francisco, CA", "Oakland, CA", "San Diego, CA", "Atlanta, GA",
-  "New York, NY", "Chicago, IL", "Houston, TX", "Miami, FL",
-];
-
-const genres = [
-  "Hip-Hop/Rap", "R&B", "Pop", "Latin", "Rock", "Country", "Electronic", "Afrobeats",
-];
-
-const TrendingNowPlayer = () => {
-  const [mode, setMode] = useState<'myHottest' | 'localTrending'>('myHottest');
-  const [city, setCity] = useState('Los Angeles, CA');
-  const [genre, setGenre] = useState('Hip-Hop/Rap');
-  const data = trendingVideos[mode];
-
-  return (
-    <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl overflow-hidden relative">
-      {/* Glow effects */}
-      <div className="absolute -top-24 -left-24 w-64 h-64 bg-[#00C2FF]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-[#7B2EFF]/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="relative z-10 p-4 sm:p-6">
-        {/* Header row */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-          <div className="flex items-center gap-2">
-            <Flame className="w-5 h-5 text-[#FF3B3B]" />
-            <h2 className="text-lg sm:text-xl font-bold text-white">Trending Now</h2>
-          </div>
-
-          {/* Toggle */}
-          <div className="flex bg-[#0A0A0A] rounded-lg p-1 self-start sm:self-auto">
-            <button
-              onClick={() => setMode('myHottest')}
-              className={`px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all min-h-[44px] ${
-                mode === 'myHottest' ? 'bg-[#00C2FF] text-white' : 'text-[#A0A0A0] hover:text-white'
-              }`}
-            >
-              My Hottest
-            </button>
-            <button
-              onClick={() => setMode('localTrending')}
-              className={`px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all min-h-[44px] ${
-                mode === 'localTrending' ? 'bg-[#7B2EFF] text-white' : 'text-[#A0A0A0] hover:text-white'
-              }`}
-            >
-              Local Trending
-            </button>
+      {scanning && (
+        <div className="flex items-center gap-3 p-3 bg-[#0A0A0A] rounded-xl border border-[#1E1E1E]">
+          <Loader2 size={15} className="text-[#00C2FF] animate-spin flex-shrink-0" />
+          <div>
+            <p className="text-sm text-white font-medium">AI scanning Reddit, YouTube & TikTok...</p>
+            <p className="text-xs text-[#555]">Identifying top trending content for: <span className="text-[#00C2FF]">{industry}</span></p>
           </div>
         </div>
+      )}
 
-        {/* Dropdowns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
-          <div className="relative">
-            <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A0A0A0] pointer-events-none" />
-            <select
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              className="w-full bg-[#0A0A0A] border border-[#2A2A2A] text-white rounded-lg pl-9 pr-8 py-3 text-sm appearance-none min-h-[44px] focus:border-[#00C2FF] focus:outline-none"
-            >
-              {cities.map((c) => (
-                <option key={c} value={c}>{c}</option>
-              ))}
-            </select>
-            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A0A0A0] pointer-events-none" />
-          </div>
-          <div className="relative">
-            <select
-              value={genre}
-              onChange={(e) => setGenre(e.target.value)}
-              className="w-full bg-[#0A0A0A] border border-[#2A2A2A] text-white rounded-lg px-4 pr-8 py-3 text-sm appearance-none min-h-[44px] focus:border-[#00C2FF] focus:outline-none"
-            >
-              {genres.map((g) => (
-                <option key={g} value={g}>{g}</option>
-              ))}
-            </select>
-            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A0A0A0] pointer-events-none" />
-          </div>
-        </div>
-
-        {/* Main video mockup — 16:9 */}
-        <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-[#141414] to-[#0A0A0A]" />
-          {/* subtle gradient glow behind play */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="absolute w-32 h-32 bg-[#00C2FF]/20 rounded-full blur-2xl" />
-            <button className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all min-h-[44px] min-w-[44px]">
-              <Play className="w-7 h-7 sm:w-9 sm:h-9 text-white fill-white ml-1" />
-            </button>
-          </div>
-
-          {/* Rank badge */}
-          <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#C9A86A] text-black text-xs font-bold px-2 py-1 rounded-md flex items-center gap-1">
-            <TrendingUp className="w-3 h-3" /> #{data.main.rank} Trending
-          </div>
-
-          {/* Bottom overlay info */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4 sm:p-5">
-            <h3 className="text-white font-bold text-base sm:text-lg truncate">{data.main.title}</h3>
-            <p className="text-[#A0A0A0] text-sm">{data.main.artist}</p>
-            <div className="flex items-center gap-4 mt-2 text-xs sm:text-sm text-[#A0A0A0]">
-              <span className="flex items-center gap-1"><Eye className="w-3.5 h-3.5" /> {data.main.views}</span>
-              <span className="flex items-center gap-1"><Heart className="w-3.5 h-3.5 text-[#FF3B3B]" /> {data.main.likes}</span>
-              <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {data.main.uploadDate}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Up Next — horizontal scroll */}
-        <div className="mt-4">
-          <h4 className="text-sm font-semibold text-[#A0A0A0] mb-3 tracking-wide uppercase">Up Next</h4>
-          <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-thin scrollbar-thumb-[#2A2A2A]">
-            {data.upNext.map((v, i) => (
-              <button
-                key={i}
-                className="flex-shrink-0 w-40 sm:w-48 bg-[#0A0A0A] border border-[#2A2A2A] rounded-lg overflow-hidden hover:border-[#00C2FF]/50 transition-all group min-h-[44px]"
-              >
-                {/* Thumbnail */}
-                <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#141414] to-[#0A0A0A]" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Play className="w-5 h-5 text-white/40 group-hover:text-white/80 transition-colors" />
-                  </div>
-                  <div className="absolute top-1.5 left-1.5 bg-[#C9A86A]/90 text-black text-[10px] font-bold px-1.5 py-0.5 rounded">
-                    #{v.rank}
+      {scanned && results.length > 0 && (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2 space-y-2">
+            {results.map(r => (
+              <div key={r.rank} className="flex items-center gap-3 p-2.5 bg-[#0A0A0A] rounded-xl border border-[#1A1A1A] hover:border-[#2A2A2A] transition-colors">
+                <div className="w-7 h-7 rounded-lg bg-[#1A1A1A] flex items-center justify-center flex-shrink-0">
+                  <span className="text-[10px] font-extrabold text-[#666]">#{r.rank}</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs font-semibold text-white truncate">{r.title}</p>
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <PlatformTag p={r.platform} />
+                    <span className="text-[10px] text-[#2A2A2A]">·</span>
+                    <Eye size={9} className="text-[#555]" /><span className="text-[10px] text-[#555]">{r.views}</span>
                   </div>
                 </div>
-                <div className="p-2">
-                  <p className="text-white text-xs font-medium truncate">{v.title}</p>
-                  <p className="text-[#A0A0A0] text-[10px] truncate">{v.artist}</p>
-                  <p className="text-[#00C2FF] text-[10px] mt-0.5">{v.views} views</p>
+                <div className="text-right flex-shrink-0">
+                  <span className="text-xs font-bold text-[#00C2FF]">{r.match}%</span>
+                  <p className="text-[9px] text-[#444]">match</p>
                 </div>
-              </button>
+              </div>
             ))}
           </div>
+          <div className="bg-[#0A0A0A] border border-[#7B2EFF33] rounded-xl p-3 self-start">
+            <div className="flex items-center gap-2 mb-3">
+              <BarChart2 size={13} className="text-[#7B2EFF]" />
+              <span className="text-xs font-bold text-white">Your Content vs Trends</span>
+            </div>
+            {[{ label: 'Trending Avg', val: 74, color: '#00C2FF' }, { label: 'Your Brand', val: 61, color: '#7B2EFF' }].map(m => (
+              <div key={m.label} className="mb-2">
+                <div className="flex justify-between mb-1">
+                  <p className="text-[10px] text-[#555]">{m.label}</p>
+                  <span className="text-[10px] font-bold" style={{ color: m.color }}>{m.val}</span>
+                </div>
+                <div className="h-1.5 bg-[#1E1E1E] rounded-full">
+                  <div className="h-full rounded-full transition-all" style={{ width: `${m.val}%`, backgroundColor: m.color }} />
+                </div>
+              </div>
+            ))}
+            <p className="text-[10px] text-[#C9A86A] leading-relaxed mt-2">⚡ Post frequency is 3× lower than the trending average in your niche</p>
+          </div>
         </div>
-      </div>
+      )}
+
+      {!scanning && !scanned && (
+        <div className="text-center py-5">
+          <Search size={26} className="text-[#222] mx-auto mb-2" />
+          <p className="text-xs text-[#444]">Enter your industry to surface top 5 trending content</p>
+          <p className="text-[10px] text-[#333] mt-1">AI benchmarks your brand media against viral data</p>
+        </div>
+      )}
     </div>
   );
 };
+
+const ActivityCard = ({ activity }: { activity: any }) => (
+  <div className={`bg-[#141414]/80 rounded-lg p-3 border-l-4 ${activity.impact === 'High' ? 'border-l-[#00FF9C]' : activity.impact === 'Medium' ? 'border-l-[#00C2FF]' : 'border-l-[#A0A0A0]'}`}>
+    <div className="flex items-start justify-between gap-3">
+      <div className="min-w-0 flex-1">
+        <h4 className="font-medium text-white text-sm truncate">{activity.title}</h4>
+        <p className="text-xs text-[#A0A0A0] mt-0.5 leading-relaxed">{activity.description}</p>
+        <span className="text-xs text-[#555] mt-0.5 block">{activity.time}</span>
+      </div>
+      <span className={`px-2 py-1 rounded-full text-xs font-medium flex-shrink-0 ${activity.impact === 'High' ? 'bg-[#00FF9C]/20 text-[#00FF9C]' : activity.impact === 'Medium' ? 'bg-[#00C2FF]/20 text-[#00C2FF]' : 'bg-[#A0A0A0]/20 text-[#A0A0A0]'}`}>{activity.impact}</span>
+    </div>
+  </div>
+);
 
 export default function Dashboard() {
   return (
     <DashboardLayout>
-      <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
-        {/* Trending Now Video Player */}
-        <TrendingNowPlayer />
+      <div className="p-4 sm:p-6 space-y-4 sm:space-y-5">
+        <TrendScanner />
 
-        {/* Hero Panel - Current Momentum */}
         <div className="gradient-border-card hero-mesh">
-          <div className="bg-[#0A0A0A]/90 rounded-lg p-4 sm:p-6 lg:p-8 relative noise-overlay">
-            <div className="flex items-start justify-between mb-4 sm:mb-6">
+          <div className="bg-[#0A0A0A]/90 rounded-lg p-4 sm:p-5 relative noise-overlay">
+            <div className="flex items-start justify-between mb-4">
               <div className="flex-1 min-w-0 mr-3">
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 gradient-text accent-cyan">CURRENT MOMENTUM</h2>
-                <p className="text-sm sm:text-base text-[#A0A0A0] leading-relaxed">
-                  You are trending in <span className="text-[#00C2FF] font-semibold">3 emerging markets</span> and{' '}
-                  <span className="text-[#7B2EFF] font-semibold">2 underground podcast networks</span>.
-                </p>
+                <h2 className="text-lg sm:text-2xl font-bold text-white mb-1 gradient-text accent-cyan">CURRENT MOMENTUM</h2>
+                <p className="text-sm text-[#A0A0A0]">Trending in <span className="text-[#00C2FF] font-semibold">{momentumData.emergingMarkets} emerging markets</span> — <span className="text-[#7B2EFF] font-semibold">cross-platform intelligence active</span>.</p>
               </div>
-              <Brain className="w-6 h-6 sm:w-8 sm:h-8 text-[#C9A86A] flex-shrink-0" />
+              <Brain className="w-6 h-6 text-[#C9A86A] flex-shrink-0" />
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {/* Momentum Score */}
-              <div className="text-center">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="flex flex-col items-center">
                 <MomentumGauge score={momentumData.score} change={momentumData.change} />
-                <div className="mt-4">
-                  <div className="text-lg font-bold text-white">Momentum Score</div>
-                  <div className="text-[#A0A0A0]">Real-time intelligence</div>
-                </div>
+                <div className="mt-2 text-center"><div className="text-sm font-bold text-white">Momentum</div><div className="text-xs text-[#A0A0A0]">Real-time</div></div>
               </div>
-
-              {/* Top Region */}
-              <div className="bg-[#141414]/80 border-t-2 border-t-[#00C2FF] rounded-lg p-4 card-glow dashboard-accent noise-overlay relative">
-                <div className="flex items-center justify-between mb-3">
-                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#00C2FF]" />
-                  <span className="text-xs bg-[#00FF9C]/20 text-[#00FF9C] px-2 py-1 rounded-full font-medium">
-                    Active
-                  </span>
-                </div>
-                <div className="text-xl sm:text-2xl font-bold text-white mb-1 stat-number">{momentumData.topRegion}</div>
-                <div className="text-[#A0A0A0] text-xs sm:text-sm">Top Region</div>
-                <div className="text-[#00C2FF] text-xs sm:text-sm font-medium mt-2 flex items-center">
-                  <ArrowUp className="w-3 h-3 mr-1" />
-                  Early Surge
-                </div>
+              <div className="bg-[#141414]/80 border-t-2 border-t-[#00C2FF] rounded-lg p-3 card-glow">
+                <div className="flex items-center justify-between mb-2"><MapPin className="w-4 h-4 text-[#00C2FF]" /><span className="text-[10px] bg-[#00FF9C]/20 text-[#00FF9C] px-1.5 py-0.5 rounded-full">Active</span></div>
+                <div className="text-base font-bold text-white">{momentumData.topRegion}</div>
+                <div className="text-[#A0A0A0] text-xs">Top Region</div>
+                <div className="text-[#00C2FF] text-xs font-medium mt-1 flex items-center gap-1"><ArrowUp className="w-3 h-3" /> Early Surge</div>
               </div>
-
-              {/* Trend Direction */}
-              <div className="bg-[#141414]/80 border-t-2 border-t-[#00FF9C] rounded-lg p-4 card-glow dashboard-accent noise-overlay relative">
-                <div className="flex items-center justify-between mb-3">
-                  <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-[#00FF9C]" />
-                  <div className="w-3 h-3 bg-[#00FF9C] rounded-full animate-pulse"></div>
-                </div>
-                <div className="text-xl sm:text-2xl font-bold text-white mb-1 stat-number">{momentumData.direction}</div>
-                <div className="text-[#A0A0A0] text-xs sm:text-sm">Trend Direction</div>
-                <div className="text-[#00FF9C] text-xs sm:text-sm font-medium mt-2">
-                  +152% growth
-                </div>
+              <div className="bg-[#141414]/80 border-t-2 border-t-[#00FF9C] rounded-lg p-3 card-glow">
+                <div className="flex items-center justify-between mb-2"><TrendingUp className="w-4 h-4 text-[#00FF9C]" /><div className="w-2 h-2 bg-[#00FF9C] rounded-full animate-pulse" /></div>
+                <div className="text-base font-bold text-white">{momentumData.direction}</div>
+                <div className="text-[#A0A0A0] text-xs">Trend Direction</div>
+                <div className="text-[#00FF9C] text-xs font-medium mt-1">+152% growth</div>
               </div>
-
-              {/* AI Insight */}
-              <div className="ai-insight-card rounded-lg p-4 relative">
-                <div className="flex items-center mb-3">
-                  <Brain className="w-4 h-4 sm:w-5 sm:h-5 text-[#7B2EFF] mr-2" />
-                  <span className="text-xs text-[#7B2EFF] font-medium tracking-wide">AI INSIGHT</span>
-                </div>
-                <p className="text-xs sm:text-sm text-white leading-relaxed">
-                  Your sound is resonating in West Coast underground circles tied to nightlife DJs and Blxst&apos;s audience. 
-                  Strike within 48 hours.
-                </p>
+              <div className="ai-insight-card rounded-lg p-3">
+                <div className="flex items-center mb-2"><Brain className="w-4 h-4 text-[#7B2EFF] mr-1.5" /><span className="text-[10px] text-[#7B2EFF] font-medium tracking-wide">AI INSIGHT</span></div>
+                <p className="text-xs text-white leading-relaxed">Brand is gaining in 3 adjacent markets. Window for geo-push is open — act within 48 hours.</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* New Mini-Widgets */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-          {/* Street Buzz Mini-Widget */}
-          <div className="bg-[#141414]/80 border border-[#2A2A2A] rounded-xl p-4 card-glow dashboard-accent noise-overlay relative">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="bg-[#141414]/80 border border-[#2A2A2A] rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-3">
-                <TrendingUp className="w-5 h-5 text-[#00FF9C]" />
-                <h3 className="text-lg font-bold text-white">Street Buzz</h3>
-              </div>
-              <button className="text-[#00FF9C] hover:text-white text-xs">View All</button>
+              <div className="flex items-center gap-2"><TrendingUp className="w-4 h-4 text-[#00FF9C]" /><h3 className="text-sm font-bold text-white">Street Buzz</h3></div>
+              <button className="text-[#00FF9C] text-xs hover:underline">View All</button>
             </div>
-            <div className="space-y-2">
-              <div className="text-sm text-[#A0A0A0] mb-2">Top Trending Cities</div>
-              {dashboardWidgets.streetBuzz.topCities.map((city, index) => (
-                <div key={city} className="flex items-center justify-between">
-                  <span className="text-sm text-white">#{index + 1} {city}</span>
-                  <div className="w-2 h-2 rounded-full bg-[#00FF9C] animate-pulse"></div>
-                </div>
+            <div className="space-y-1.5">
+              {['Los Angeles, CA', 'Atlanta, GA', 'New York, NY', 'Houston, TX', 'Chicago, IL'].map((city, i) => (
+                <div key={city} className="flex items-center justify-between"><span className="text-xs text-white">#{i + 1} {city}</span><div className="w-2 h-2 rounded-full bg-[#00FF9C] animate-pulse" /></div>
               ))}
             </div>
           </div>
-
-          {/* Upcoming Events Mini-Widget */}
-          <div className="bg-[#141414]/80 border border-[#2A2A2A] rounded-xl p-4 card-glow dashboard-accent noise-overlay relative">
+          <div className="bg-[#141414]/80 border border-[#2A2A2A] rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-3">
-                <Calendar className="w-5 h-5 text-[#FFB800]" />
-                <h3 className="text-lg font-bold text-white">Upcoming Events</h3>
-              </div>
-              <button className="text-[#FFB800] hover:text-white text-xs">View All</button>
+              <div className="flex items-center gap-2"><Calendar className="w-4 h-4 text-[#FFB800]" /><h3 className="text-sm font-bold text-white">Upcoming Events</h3></div>
+              <button className="text-[#FFB800] text-xs hover:underline">View All</button>
             </div>
-            <div className="space-y-3">
-              {dashboardWidgets.upcomingEvents.map((event, index) => (
-                <div key={index} className="bg-[#1E1E1E] rounded-lg p-3">
-                  <div className="font-medium text-white text-sm">{event.name}</div>
-                  <div className="text-xs text-[#A0A0A0] mt-1">{event.date} • {event.venue}</div>
-                </div>
+            <div className="space-y-2">
+              {[{ name: 'Brand Pop-Up — DTLA', date: 'Apr 22', venue: 'Arts District' }, { name: 'Industry Mixer', date: 'Apr 28', venue: 'West Hollywood' }].map((e, i) => (
+                <div key={i} className="bg-[#1E1E1E] rounded-lg p-2.5"><div className="font-medium text-white text-xs">{e.name}</div><div className="text-[10px] text-[#A0A0A0] mt-0.5">{e.date} · {e.venue}</div></div>
               ))}
             </div>
           </div>
-
-          {/* Submission Status Mini-Widget */}
-          <div className="bg-[#141414]/80 border border-[#2A2A2A] rounded-xl p-4 card-glow dashboard-accent noise-overlay relative">
+          <div className="bg-[#141414]/80 border border-[#2A2A2A] rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-3">
-                <Send className="w-5 h-5 text-[#00C2FF]" />
-                <h3 className="text-lg font-bold text-white">Submissions</h3>
-              </div>
-              <button className="text-[#00C2FF] hover:text-white text-xs">View All</button>
+              <div className="flex items-center gap-2"><Send className="w-4 h-4 text-[#00C2FF]" /><h3 className="text-sm font-bold text-white">Submissions</h3></div>
+              <button className="text-[#00C2FF] text-xs hover:underline">View All</button>
             </div>
             <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-[#FFB800]">Pending</span>
-                <span className="text-lg font-bold text-white">{dashboardWidgets.submissionStatus.pending}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-[#00FF9C]">Accepted</span>
-                <span className="text-lg font-bold text-white">{dashboardWidgets.submissionStatus.accepted}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-[#7B2EFF]">Published</span>
-                <span className="text-lg font-bold text-white">{dashboardWidgets.submissionStatus.published}</span>
-              </div>
+              {[{ label: 'Pending', val: 4, color: '#FFB800' }, { label: 'Accepted', val: 7, color: '#00FF9C' }, { label: 'Published', val: 1, color: '#7B2EFF' }].map(s => (
+                <div key={s.label} className="flex items-center justify-between"><span className="text-xs" style={{ color: s.color }}>{s.label}</span><span className="text-sm font-bold text-white">{s.val}</span></div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Quick Stats Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-          {quickStats.map((stat, index) => (
-            <div key={index} className="bg-[#141414]/80 border-t-2 border-t-[#00C2FF] rounded-lg p-3 sm:p-4 card-glow dashboard-accent noise-overlay relative">
-              <div className="text-lg sm:text-2xl font-bold text-white mb-1 stat-number">
-                {stat.value}
-              </div>
-              <div className="text-[#A0A0A0] text-xs sm:text-sm mb-2 leading-tight">{stat.label}</div>
-              <div className="text-[#00C2FF] text-xs sm:text-sm font-medium">{stat.change}</div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {quickStats.map((stat, i) => (
+            <div key={i} className="bg-[#141414]/80 border-t-2 border-t-[#00C2FF] rounded-lg p-3 card-glow noise-overlay relative">
+              <div className="text-lg sm:text-2xl font-bold text-white mb-1">{stat.value}</div>
+              <div className="text-[#A0A0A0] text-xs mb-1 leading-tight">{stat.label}</div>
+              <div className="text-[#00C2FF] text-xs font-medium">{stat.change}</div>
             </div>
           ))}
         </div>
 
-        {/* Section divider */}
-        <div className="section-divider"></div>
-        
-        {/* Recent Activity Feed */}
-        <div className="space-y-3 sm:space-y-4">
+        <div className="section-divider" />
+
+        <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg sm:text-xl font-bold text-white gradient-text">Recent Activity</h3>
-            <button className="text-[#00C2FF] hover:text-[#7B2EFF] text-xs sm:text-sm font-medium transition-colors">
-              View All
-            </button>
+            <h3 className="text-lg font-bold text-white gradient-text">Recent Activity</h3>
+            <button className="text-[#00C2FF] text-xs font-medium hover:text-[#7B2EFF] transition-colors">View All</button>
           </div>
-          
-          <div className="space-y-3">
-            {recentActivity.map((activity) => (
-              <ActivityCard key={activity.id} activity={activity} />
-            ))}
-          </div>
+          <div className="space-y-2">{recentActivity.map((a) => <ActivityCard key={a.id} activity={a} />)}</div>
         </div>
 
-        {/* Section divider */}
-        <div className="section-divider purple"></div>
-        
-        {/* Quick Actions */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          <button className="bg-[#141414]/80 hover:bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow dashboard-accent group noise-overlay relative">
-            <div className="flex items-center justify-between mb-3">
-              <Radio className="w-5 h-5 sm:w-6 sm:h-6 text-[#00FF9C] group-hover:scale-110 transition-transform" />
-              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-[#A0A0A0]" />
-            </div>
-            <div className="text-white font-medium text-sm sm:text-base">Check Pulse</div>
-            <div className="text-[#A0A0A0] text-xs sm:text-sm">View cultural signals</div>
-          </button>
+        <div className="section-divider purple" />
 
-          <button className="bg-[#141414]/80 hover:bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow dashboard-accent group noise-overlay relative">
-            <div className="flex items-center justify-between mb-3">
-              <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-[#C9A86A] group-hover:scale-110 transition-transform" />
-              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-[#A0A0A0]" />
-            </div>
-            <div className="text-white font-medium text-sm sm:text-base">LA Campaign</div>
-            <div className="text-[#A0A0A0] text-xs sm:text-sm">Run geo-targeted push</div>
-          </button>
-
-          <button className="bg-[#141414]/80 hover:bg-[#0A0A0A] border border-[#FFB800] border-pulse rounded-xl p-3 sm:p-4 text-left transition-all duration-200 card-glow revenue-accent group noise-overlay relative">
-            <div className="flex items-center justify-between mb-3">
-              <DollarSign className="w-5 h-5 sm:w-6 sm:h-6 text-[#FFB800] group-hover:scale-110 transition-transform" />
-              <span className="w-2 h-2 bg-[#FF3B3B] rounded-full animate-pulse"></span>
-            </div>
-            <div className="text-white font-medium text-sm sm:text-base">Claim Revenue</div>
-            <div className="text-[#FFB800] text-xs sm:text-sm font-medium">$4.5K unclaimed</div>
-          </button>
-
-          <button className="btn-gradient p-3 sm:p-4 text-left transition-all duration-200 group text-white rounded-xl">
-            <div className="flex items-center justify-between mb-3">
-              <Play className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" />
-              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-white/80" />
-            </div>
-            <div className="text-white font-medium text-sm sm:text-base">Run Strategy</div>
-            <div className="text-white/80 text-xs sm:text-sm">AI recommendations</div>
-          </button>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[
+            { icon: TrendingUp, label: 'View Pulse', sub: 'Cultural signals', color: '#00FF9C' },
+            { icon: MapPin, label: 'Geo Campaign', sub: 'Targeted push', color: '#C9A86A' },
+            { icon: DollarSign, label: 'Revenue', sub: '$4.5K activity', color: '#FFB800', alert: true },
+            { icon: Zap, label: 'Run Strategy', sub: 'AI recommendations', color: '#00C2FF', gradient: true },
+          ].map((action, i) => (
+            <button key={i} className={`${action.gradient ? 'btn-gradient' : 'bg-[#141414]/80 hover:bg-[#0A0A0A] border border-[#2A2A2A]'} rounded-xl p-3 text-left transition-all group`}>
+              <div className="flex items-center justify-between mb-2">
+                <action.icon className="w-5 h-5 group-hover:scale-110 transition-transform" style={{ color: action.color }} />
+                {action.alert ? <span className="w-2 h-2 bg-[#FF3B3B] rounded-full animate-pulse" /> : <ExternalLink className="w-3 h-3 text-[#A0A0A0]" />}
+              </div>
+              <div className="text-white font-medium text-sm">{action.label}</div>
+              <div className="text-xs mt-0.5" style={{ color: action.gradient ? 'rgba(255,255,255,0.7)' : '#A0A0A0' }}>{action.sub}</div>
+            </button>
+          ))}
         </div>
       </div>
     </DashboardLayout>

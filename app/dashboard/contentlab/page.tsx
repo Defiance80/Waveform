@@ -55,9 +55,9 @@ const culturalMetrics = [
 ];
 
 const recentAssets = [
-  { type: 'SEO Image', title: 'West Coast Sound — Album Drop', platform: 'Instagram', time: '2h ago', status: 'Published' },
-  { type: 'Thumbnail', title: 'Behind The Beat with DJ Quake', platform: 'YouTube', time: '5h ago', status: 'Draft' },
-  { type: 'Post', title: 'LA Cipher Series — Vol. 3', platform: '3 platforms', time: '1d ago', status: 'Live' },
+  { type: 'SEO Image', title: 'Brand Launch — Spring Collection', platform: 'Instagram', time: '2h ago', status: 'Published' },
+  { type: 'Thumbnail', title: 'Behind the Business — Ep. 7', platform: 'YouTube', time: '5h ago', status: 'Draft' },
+  { type: 'Post', title: 'Community Spotlight — Vol. 3', platform: '3 platforms', time: '1d ago', status: 'Live' },
 ];
 
 export default function ContentLabPage() {
@@ -124,7 +124,7 @@ export default function ContentLabPage() {
                   <TrendingUp size={13} className="text-[#00FF9C]" />
                   <span className="text-xs text-[#00FF9C] font-semibold">+6 pts this week</span>
                 </div>
-                <p className="text-xs text-[#666] mt-1">Top 12% of Hip-Hop creators in LA</p>
+                <p className="text-xs text-[#666] mt-1">Top 12% of brands in your industry & market</p>
               </div>
             </div>
 
@@ -211,7 +211,6 @@ export default function ContentLabPage() {
             </div>
             <div className="space-y-3">
               {[
-                { label: 'Street Credibility', val: 88, color: '#FF3B3B' },
                 { label: 'Digital Presence', val: 74, color: '#00C2FF' },
                 { label: 'Cultural Authority', val: 81, color: '#7B2EFF' },
                 { label: 'Audience Loyalty', val: 65, color: '#C9A86A' },
@@ -230,7 +229,7 @@ export default function ContentLabPage() {
             </div>
             <div className="mt-4 pt-3 border-t border-[#1E1E1E]">
               <p className="text-[10px] text-[#555] leading-relaxed">
-                Your Cultural Authority outperforms 81% of artists in your genre and market. Lean into it.
+                Your Cultural Authority outperforms 81% of brands in your industry and market. Lean into it.
               </p>
             </div>
           </div>
