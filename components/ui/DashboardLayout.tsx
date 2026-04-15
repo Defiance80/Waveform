@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { 
-  Home, Radio, TrendingUp, Zap, DollarSign, Target, Settings, 
-  Menu, X, User, Bell, ChevronLeft, LogOut, Calendar, Send, Wifi
+import {
+  Home, Radio, TrendingUp, Zap, DollarSign, Target, Settings,
+  Menu, X, User, Bell, ChevronLeft, LogOut, Calendar, Send, Wifi, Sparkles
 } from 'lucide-react';
 
 const navigationItems = [
@@ -19,6 +19,7 @@ const navigationItems = [
   { name: 'PR & Campaigns', href: '/dashboard/pr', icon: Radio },
   { name: 'Submissions', href: '/dashboard/submit', icon: Send },
   { name: 'Rank Assassin', href: '/dashboard/rank-assassin', icon: Target },
+  { name: 'ContentLab', href: '/dashboard/contentlab', icon: Sparkles },
   { name: 'Connect', href: '/dashboard/connect', icon: Wifi },
   { name: 'Leverage', href: '/dashboard/leverage', icon: Target },
   { name: 'Settings', href: '/dashboard/settings', icon: Settings },
