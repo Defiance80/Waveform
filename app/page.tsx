@@ -1,176 +1,218 @@
-'use client';
+import React from 'react';
+import Link from 'next/link';
+import { Brain, Trophy, Gift, Ticket, ChevronRight, Flame } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server';
+import { ArtistAvatar } from '@/components/fan/ArtistAvatar';
+import { RANKS } from '@/lib/game/progression';
+import type { Artist } from '@/lib/types';
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Eye, EyeOff, Lock } from 'lucide-react';
+export const dynamic = 'force-dynamic';
 
-export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+const STEPS = [
+  {
+    icon: Brain,
+    color: '#00C2FF',
+    title: 'Prove you know them',
+    body: 'Six minigames per artist — trivia, speed rounds, lyric gaps, cover art, deep cuts, and a daily drop that carries your streak.',
+  },
+  {
+    icon: Trophy,
+    color: '#7B2EFF',
+    title: 'Level up your rank',
+    body: 'Every correct answer is XP, and XP is the only currency here. Climb from Listener to Legend, and your rank follows you across every artist.',
+  },
+  {
+    icon: Gift,
+    color: '#00FF9C',
+    title: 'Unlock real things',
+    body: 'Unreleased demos, studio footage, tour merch, signed vinyl. Each one opens at a rank — nothing is bought, and claiming costs you nothing.',
+  },
+  {
+    icon: Ticket,
+    color: '#C9A86A',
+    title: 'Enter the monthly draws',
+    body: 'Soundcheck access, private sets, meet and greets. Your rank decides how many tickets you hold — a Legend carries 40x a Listener.',
+  },
+];
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 800));
-    
-    if (email && password) {
-      localStorage.setItem('slapbox_user', JSON.stringify({ email, name: 'Kendrick Cole' }));
-      router.push('/dashboard');
-    } else {
-      setError('Please enter your credentials');
-    }
-    setIsLoading(false);
-  };
+export default async function LandingPage() {
+  // Show real artists from the database, not a hardcoded list.
+  const { data } = await createClient()
+    .from('artists')
+    .select('id, name, slug, genre, accent_color, monthly_listeners')
+    .order('monthly_listeners', { ascending: false })
+    .limit(10);
 
-  const fillCredentials = (e: string, p: string) => {
-    setEmail(e);
-    setPassword(p);
-    setError('');
-  };
+  const artists = (data ?? []) as Artist[];
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] relative overflow-hidden flex items-center justify-center">
-      {/* Enhanced background pattern - more visible */}
-      <div className="absolute inset-0 opacity-[0.08]" style={{
-        backgroundImage: `repeating-linear-gradient(90deg, #00C2FF 0px, transparent 1px, transparent 60px),
-                          repeating-linear-gradient(0deg, #7B2EFF 0px, transparent 1px, transparent 60px)`
-      }} />
-      
-      {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-[#00C2FF]/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-80 sm:h-80 bg-[#7B2EFF]/5 rounded-full blur-3xl" />
+    <div className="min-h-screen bg-[#0A0A0A] relative overflow-hidden">
+      <div
+        className="absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage: `repeating-linear-gradient(90deg, #00C2FF 0px, transparent 1px, transparent 60px),
+                            repeating-linear-gradient(0deg, #7B2EFF 0px, transparent 1px, transparent 60px)`,
+        }}
+      />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#00C2FF]/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-[#7B2EFF]/5 rounded-full blur-3xl" />
 
-      <div className="relative z-10 w-full max-w-md mx-4 px-4 sm:px-0">
-        {/* Logo */}
-        <div className="text-center mb-10">
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
+      <div className="relative z-10">
+        {/* ── Nav ──────────────────────────────────────────────────────────── */}
+        <header className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+          <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-[#00C2FF] to-[#7B2EFF] bg-clip-text text-transparent">
+            SLAPBOX
+          </span>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/login"
+              className="px-4 py-2 rounded-xl text-sm font-medium text-[#A0A0A0] hover:text-white transition-colors"
+            >
+              Sign in
+            </Link>
+            <Link
+              href="/join"
+              className="px-4 py-2 rounded-xl text-sm font-bold text-white transition-transform hover:scale-105"
+              style={{ background: 'linear-gradient(135deg, #00C2FF, #7B2EFF)' }}
+            >
+              Start free
+            </Link>
+          </div>
+        </header>
+
+        {/* ── Hero ─────────────────────────────────────────────────────────── */}
+        <section className="max-w-3xl mx-auto px-4 pt-16 pb-14 text-center">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-[#FFB800] bg-[#FFB800]/10 mb-6">
+            <Flame size={13} /> 7 days free, then $4.99/month
+          </span>
+
+          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
+            Anyone can stream them.
+            <br />
             <span className="bg-gradient-to-r from-[#00C2FF] via-[#3B82F6] to-[#7B2EFF] bg-clip-text text-transparent">
-              SLAPBOX
+              Prove you know them.
             </span>
           </h1>
-          <div className="flex items-center justify-center gap-1.5 mt-3">
-            <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-[#00C2FF]" />
-            <p className="text-[#A0A0A0] text-xs font-medium tracking-[0.2em] uppercase">
-              Cultural Intelligence OS
-            </p>
-            <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-[#7B2EFF]" />
-          </div>
-        </div>
 
-        {/* Login Card */}
-        <div className="bg-[#111111]/80 border border-[#1E1E1E] rounded-2xl overflow-hidden noise-overlay relative">
-          {/* Gradient top bar */}
-          <div className="h-1 bg-gradient-to-r from-[#00C2FF] via-[#3B82F6] to-[#7B2EFF]" />
-          
-          <div className="p-4 sm:p-6 md:p-8 relative z-10">
-            <p className="text-[#A0A0A0] text-sm text-center mb-6">
-              See the motion before it becomes momentum.
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-white mb-1.5">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl text-white placeholder-[#555] text-sm focus:outline-none focus:ring-2 focus:ring-[#00C2FF]/50 focus:border-[#00C2FF]/50 transition-all"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-white mb-1.5">
-                  Password
-                </label>
-                <div className="relative">
-                  <input
-                    id="password"
-                    type={showPassword ? 'text' : 'password'}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-4 py-3 pr-12 bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl text-white placeholder-[#555] text-sm focus:outline-none focus:ring-2 focus:ring-[#00C2FF]/50 focus:border-[#00C2FF]/50 transition-all"
-                    placeholder="Enter your password"
-                    required
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#555] hover:text-white transition-colors p-1"
-                  >
-                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                  </button>
-                </div>
-              </div>
-
-              {error && (
-                <div className="bg-[#FF3B3B]/10 border border-[#FF3B3B]/20 rounded-xl p-3">
-                  <p className="text-sm text-[#FF3B3B]">{error}</p>
-                </div>
-              )}
-
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full py-3.5 rounded-xl font-semibold text-sm text-white transition-all duration-200 disabled:opacity-50 hover:scale-[1.02] active:scale-[0.98]"
-                style={{ background: 'linear-gradient(135deg, #00C2FF, #7B2EFF)', boxShadow: '0 0 25px rgba(0,194,255,0.2)' }}
-              >
-                {isLoading ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                    </svg>
-                    Signing In...
-                  </span>
-                ) : (
-                  <span className="flex items-center justify-center gap-2">
-                    <Lock size={16} />
-                    Sign In
-                  </span>
-                )}
-              </button>
-            </form>
-
-            {/* Demo Credentials */}
-            <div className="mt-6 pt-5 border-t border-[#1E1E1E]">
-              <p className="text-[10px] font-semibold text-[#555] text-center uppercase tracking-[0.15em] mb-3">
-                Demo Access
-              </p>
-              <button
-                type="button"
-                onClick={() => fillCredentials('demo@slapbox.ai', 'demo123')}
-                className="w-full p-3 bg-[#0A0A0A] hover:bg-[#151515] border border-[#1E1E1E] hover:border-[#00C2FF]/30 rounded-xl transition-all duration-200 text-left group cursor-pointer"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-white group-hover:text-[#00C2FF] transition-colors">
-                      Demo Account
-                    </p>
-                    <p className="text-xs text-[#555] font-mono mt-0.5">demo@slapbox.ai</p>
-                  </div>
-                  <span className="text-xs text-[#555] font-mono">demo123</span>
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="text-center mt-6">
-          <p className="text-[#555] text-xs">
-            Developed by <span className="text-[#C9A86A] font-medium">GoKoncentrate</span>
+          <p className="text-base sm:text-lg text-[#A0A0A0] mt-6 max-w-xl mx-auto leading-relaxed">
+            SLAPBOX turns knowing an artist into something worth having. Play their trivia, climb the
+            ranks, and unlock rewards that never go public — merch, unreleased music, private events.
           </p>
-        </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
+            <Link
+              href="/join"
+              className="px-7 py-3.5 rounded-xl font-bold text-white transition-transform hover:scale-105 flex items-center justify-center gap-2"
+              style={{ background: 'linear-gradient(135deg, #00C2FF, #7B2EFF)', boxShadow: '0 0 30px rgba(0,194,255,0.25)' }}
+            >
+              Become a superfan <ChevronRight size={17} />
+            </Link>
+            <Link
+              href="/login?next=/dashboard"
+              className="px-7 py-3.5 rounded-xl font-bold text-white bg-[#151515] border border-[#2A2A2A] hover:border-[#00C2FF]/40 transition-colors flex items-center justify-center"
+            >
+              I&apos;m an artist or brand
+            </Link>
+          </div>
+        </section>
+
+        {/* ── Artist marquee ───────────────────────────────────────────────── */}
+        {artists.length > 0 && (
+          <section className="max-w-5xl mx-auto px-4 pb-16">
+            <p className="text-center text-xs uppercase tracking-[0.2em] text-[#555] font-semibold mb-5">
+              Playing now
+            </p>
+            <div className="flex flex-wrap justify-center gap-2.5">
+              {artists.map((a) => (
+                <Link
+                  key={a.id}
+                  href="/join"
+                  className="flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full bg-[#111111] border border-[#1E1E1E] hover:border-[#2A2A2A] transition-colors"
+                >
+                  <ArtistAvatar name={a.name} accent={a.accent_color} size={28} />
+                  <div className="text-left">
+                    <p className="text-xs font-bold text-white leading-tight">{a.name}</p>
+                    <p className="text-[10px] text-[#666] leading-tight">{a.genre}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ── How it works ─────────────────────────────────────────────────── */}
+        <section className="max-w-5xl mx-auto px-4 pb-16">
+          <div className="grid sm:grid-cols-2 gap-3">
+            {STEPS.map((s, i) => (
+              <div key={s.title} className="bg-[#111111] border border-[#1E1E1E] rounded-2xl p-5">
+                <div className="flex items-center gap-3 mb-3">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${s.color}1A` }}
+                  >
+                    <s.icon size={19} style={{ color: s.color }} />
+                  </div>
+                  <span className="text-xs font-bold text-[#444] tabular-nums">0{i + 1}</span>
+                </div>
+                <h3 className="font-bold text-white mb-1.5">{s.title}</h3>
+                <p className="text-sm text-[#888] leading-relaxed">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Rank ladder ──────────────────────────────────────────────────── */}
+        <section className="max-w-5xl mx-auto px-4 pb-16">
+          <h2 className="text-center text-2xl font-extrabold text-white mb-2">Seven ranks</h2>
+          <p className="text-center text-sm text-[#A0A0A0] mb-6 max-w-lg mx-auto">
+            Your rank is your standing across the whole platform — and the multiplier on every
+            monthly prize draw you enter.
+          </p>
+          <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
+            {RANKS.map((r) => (
+              <div
+                key={r.name}
+                className="rounded-xl px-2 py-3 text-center"
+                style={{ background: `${r.color}12`, boxShadow: `inset 0 0 0 1px ${r.color}33` }}
+              >
+                <p className="text-[10px] font-bold uppercase tracking-wide truncate" style={{ color: r.color }}>
+                  {r.name}
+                </p>
+                <p className="text-base font-extrabold text-white mt-1">{r.weight}x</p>
+                <p className="text-[9px] text-[#666] mt-0.5">LVL {r.min}+</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── For artists ──────────────────────────────────────────────────── */}
+        <section className="max-w-3xl mx-auto px-4 pb-20">
+          <div
+            className="rounded-2xl p-7 text-center border"
+            style={{ background: 'rgba(123,46,255,0.06)', borderColor: 'rgba(123,46,255,0.25)' }}
+          >
+            <h2 className="text-xl font-extrabold text-white mb-2">For artists and brands</h2>
+            <p className="text-sm text-[#A0A0A0] max-w-lg mx-auto leading-relaxed mb-5">
+              Every subscription is split across the artists a fan actually engages with, weighted by
+              how much they play. Set your own trivia, stock your own shop, and see exactly which
+              fans are showing up.
+            </p>
+            <Link
+              href="/login?next=/dashboard"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-white transition-transform hover:scale-105"
+              style={{ background: 'linear-gradient(135deg, #7B2EFF, #00C2FF)' }}
+            >
+              Open the artist console <ChevronRight size={16} />
+            </Link>
+          </div>
+        </section>
+
+        <footer className="border-t border-[#1E1E1E] py-6">
+          <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between gap-2 text-xs text-[#555]">
+            <span>© 2026 SLAPBOX</span>
+            <span>Developed by GoKoncentrate</span>
+          </div>
+        </footer>
       </div>
     </div>
   );

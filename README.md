@@ -1,168 +1,173 @@
 # SLAPBOX
 
-> "See the motion before it becomes momentum."
+> Anyone can stream them. Prove you know them.
 
-SLAPBOX is a Cultural Intelligence OS designed for music artists and labels. This premium dark-mode SaaS platform combines hip-hop culture with high-end tech aesthetics to deliver real-time insights, strategic recommendations, and revenue intelligence.
+SLAPBOX turns fandom into something measurable and worth having. Fans sign up,
+find the artists and brands they care about, play trivia minigames about them,
+and climb a ranking system that unlocks rewards which never go public —
+unreleased demos, studio footage, tour merch, signed vinyl, private events.
 
-## 🎯 Features
+Artists and brands get the other half: a paying, verified audience they own,
+with a share of every subscription routed to them by how much fans actually
+engage.
 
-### Dashboard Modules
-- **Dashboard** - Central momentum overview with AI insights
-- **Pulse** - Cultural signal tracking across podcasts, blogs, forums
-- **Momentum** - Geographic intelligence and market traction analysis
-- **Echo** - Content spread tracking and viral clip monitoring
-- **Revenue** - Revenue stream intelligence and unclaimed royalty alerts
-- **Leverage** - AI-powered action center with strategic recommendations
-- **Settings** - Profile management, platform connections, API access
-
-### Key Capabilities
-- ✨ Real-time cultural intelligence
-- 🧠 AI-powered strategic insights
-- 💰 Revenue tracking & optimization
-- 📍 Geographic momentum analysis
-- 🔄 Cross-platform content spread monitoring
-- 📱 Mobile-first responsive design
-- 🎨 Premium dark-mode UI with hip-hop aesthetics
-
-## 🚀 Demo
-
-**Live Demo Credentials:**
-- Email: `demo@slapbox.ai`
-- Password: `demo123`
-
-## 🛠️ Tech Stack
-
-- **Frontend**: Next.js 14 (App Router), TypeScript, Tailwind CSS v3
-- **Charts**: Recharts for data visualization
-- **Icons**: Lucide React
-- **Styling**: CSS animations with glow effects and smooth transitions
-- **Data**: Static mock data for realistic music industry scenarios
-
-## 🎨 Design System
-
-### Colors
-- Primary Background: `#0A0A0A`
-- Secondary Background: `#111111`
-- Accent Blue: `#00C2FF`
-- Accent Purple: `#7B2EFF`
-- Accent Gold: `#C9A86A`
-- Success: `#00FF9C`
-- Warning: `#FFB800`
-- Danger: `#FF3B3B`
-
-### UX Principles
-- **Mobile-first design** - Optimized for 375px+ screens
-- **Dark mode only** - Premium feel with neon accents
-- **Cards over tables** - Focus on insights, not raw data
-- **One-glance intelligence** - Every screen answers "What should I do next?"
-- **Smooth micro-interactions** - Glow hover effects, slide-in animations
-
-## 🏃‍♂️ Quick Start
-
-```bash
-# Clone the repository
-git clone git@github.com:Defiance80/Waveform.git
-
-# Navigate to project directory
-cd Waveform
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Open http://localhost:3000
-```
-
-## 📁 Project Structure
-
-```
-waveform/
-├── app/                    # Next.js 14 App Router
-│   ├── dashboard/         # Dashboard pages
-│   │   ├── pulse/         # Cultural signal tracking
-│   │   ├── momentum/      # Geographic intelligence
-│   │   ├── echo/          # Content spread tracking
-│   │   ├── revenue/       # Revenue intelligence
-│   │   ├── leverage/      # Action center
-│   │   └── settings/      # Settings & preferences
-│   ├── globals.css        # Global styles with animations
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Login page
-├── components/
-│   └── ui/               # Reusable UI components
-├── data/                 # Mock data for demos
-└── public/              # Static assets
-```
-
-## 🎭 Mock Data
-
-The application includes comprehensive mock data for:
-- Artist profile: "Kendrick Cole" (hip-hop artist from Atlanta)
-- 20+ podcast mentions across major shows
-- 15+ blog features from music publications
-- Geographic momentum data for 6+ cities
-- Viral content tracking across platforms
-- Revenue streams and unclaimed royalties
-- AI-generated strategic recommendations
-
-## 🌟 Key Features Spotlight
-
-### AI Strategic Intelligence
-- Real-time cultural signal processing
-- Market momentum detection
-- Strategic timing recommendations
-- Cross-platform content analysis
-
-### Revenue Intelligence
-- Unclaimed royalty detection
-- Platform-by-platform earnings tracking
-- Unauthorized usage alerts
-- Revenue optimization suggestions
-
-### Geographic Momentum
-- City-by-city traction analysis
-- Market penetration tracking
-- Regional playlist monitoring
-- Competition analysis
-
-## 🎨 Brand Identity
-
-WAVEFORM embodies urban professionalism - hip-hop influenced but executive-level. The interface draws inspiration from:
-- Apple Music's clean aesthetics
-- Cash App's minimal elegance
-- Bloomberg Terminal's data authority
-- Spotify Wrapped's cultural energy
-
-## 📱 Mobile Experience
-
-- Bottom navigation for key actions
-- Touch-friendly 44px+ targets
-- Collapsible sidebar on desktop
-- Floating action button for quick strategy execution
-- No horizontal scroll anywhere
-
-## 🚀 Deployment
-
-The application is built for production deployment on platforms like Vercel:
-
-```bash
-# Build for production
-npm run build
-
-# Verify build passes
-npm start
-```
-
-## 👥 Development Team
-
-Developed by **GoKoncentrate** - Bringing premium music-tech experiences to artists and labels worldwide.
-
-## 📄 License
-
-© 2024 WAVEFORM. All rights reserved.
+**→ [docs/SETUP.md](docs/SETUP.md) to get it live.**
 
 ---
 
-*This project represents a $50M funded music-tech startup's flagship product - premium, cultural, intelligent. Not a generic dashboard with dark mode slapped on.*
+## The loop
+
+```
+   sign up (7-day trial)
+        ↓
+   find an artist  ──────────────┐
+        ↓                        │
+   play a minigame               │  6 modes: trivia, speed round,
+        ↓                        │  lyric gap, cover art, deep cut,
+   earn XP                       │  daily drop
+        ↓                        │
+   XP → level → RANK ────────────┤  7 ranks: Listener → Legend
+        ↓                        │
+   rank UNLOCKS the shelf        │  merch · audio · video · vinyl
+        ↓                        │
+   rank weights monthly DRAW ────┘  1x → 40x tickets by rank
+```
+
+**One currency: XP.** It is only ever earned, never spent. Rewards are not
+bought — each one carries a level requirement, and reaching that rank makes it
+claimable. Claiming the signed vinyl costs a fan nothing but the standing they
+already built, so nobody is ever punished for taking what they earned.
+
+Scarcity comes from `stock` and `per_fan_limit` rather than from a price.
+
+## Two economies
+
+**Fan → platform.** $4.99/month after a 7-day trial, billed through Stripe.
+
+**Platform → artist.** Each fan's payment is split across the artists they
+actually play, weighted by *affinity* — a counter that advances every time
+they finish a round with that artist. Each artist then keeps their
+`rev_share_pct` (default 50%) of the slice allocated to them. A fan who only
+plays one artist sends their whole share there; a fan spread across six splits
+six ways. Run monthly via `allocate_revenue()`.
+
+## Ranks
+
+| Rank | Level | Draw tickets |
+|---|---|---|
+| Listener | 1 | 1x |
+| Supporter | 5 | 2x |
+| Regular | 10 | 4x |
+| Real One | 20 | 8x |
+| Day One | 35 | 15x |
+| Inner Circle | 50 | 25x |
+| Legend | 70 | 40x |
+
+XP curve is `50 × (level−1)^1.6`. A five-question round pays roughly 60–90 XP,
+so Regular lands around 22 rounds in and Inner Circle is a genuine long haul.
+
+Each artist's shelf ladders across those tiers: an unreleased demo at Listener,
+a merch discount at Supporter, studio footage at Regular, the tour tee at Real
+One, signed vinyl at Inner Circle.
+
+---
+
+## Security model
+
+Progression is the attack surface: XP is the only thing standing between a fan
+and real merchandise, so forged XP is forged merchandise. "Fan grants
+themselves 100,000 XP" has to be structurally impossible, not merely
+inconvenient.
+
+**Every progression mutation is a `SECURITY DEFINER` Postgres function.** XP,
+levels, streaks, claims and draw entries can only change through `start_game`,
+`submit_answer`, `finish_game`, `claim_reward` and `enter_draw`. Each
+re-derives the caller from `auth.uid()` and never trusts an ID passed in from
+the client. `award_xp` is internal, with execute revoked from clients entirely.
+
+**Row level security alone would not be enough.** A policy like
+`id = auth.uid()` still permits `UPDATE fan_profiles SET xp = 999999` on your
+own row, and `UPDATE profiles SET role = 'admin'` on yours. Postgres RLS cannot
+restrict columns, so `0002_slapbox_rls.sql` revokes Supabase's default blanket
+grants and re-grants column by column — fans can edit their city and display
+name, and nothing else.
+
+**Answer keys are unreachable.** `question_answers` is a separate table with
+RLS enabled and *zero* policies and *zero* grants: every client read returns no
+rows. The correct index is returned by `submit_answer` only after the fan's
+choice has already been written, and the primary key on `session_answers` makes
+re-answering impossible.
+
+**Subscriptions are webhook-only.** Clients can read their subscription but
+never write it, so subscriber-gated rewards cannot be self-granted.
+
+**XP is append-only.** `award_xp` rejects any non-positive delta, and the
+`xp_ledger` is never debited, so the rank ladder cannot be walked backwards.
+
+Known limitation: `ms_taken` for speed-round bonuses is client-reported and
+therefore spoofable. The bonus is capped at +50% of a question's base value, so
+the ceiling on this exploit is small. Server-side timing would need per-question
+issue timestamps.
+
+---
+
+## Stack
+
+- **Next.js 14** App Router, TypeScript, Tailwind
+- **Supabase** — Postgres, Auth, RLS
+- **Stripe** — subscriptions (optional; the app runs fully without it)
+- **Recharts**, **lucide-react**
+
+## Layout
+
+```
+app/
+  page.tsx                    landing
+  login/ join/ auth/callback/ real Supabase auth
+  fan/                        the fan product
+    page.tsx                  home: level, streak, your artists
+    discover/                 browse and search artists
+    a/[slug]/                 artist hub: minigames + their shelf
+    play/[slug]/[kind]/       the game
+    shop/ vault/ draws/       the shelf, claims, and monthly draws
+    profile/ subscription/
+  dashboard/                  artist console (still demo data)
+  api/billing/                Stripe checkout, portal, webhook
+components/fan/               game player, reward card, level bar
+lib/
+  supabase/                   browser, server and service-role clients
+  game/progression.ts         XP curve and ranks, mirrored from SQL
+supabase/migrations/          schema, RLS, engine — run in order
+scripts/seed.mjs              20 demo artists, 300 questions, 120 rewards
+docs/                         SETUP.md, SOCIAL-SETUP.md
+```
+
+## Demo artists
+
+The 20 seeded accounts are **fictional characters** — invented names, cities and
+discographies, mostly hip-hop and R&B with some pop. Putting a real recording
+artist's name and likeness on an unclaimed account is impersonation, and the
+takedown would land before launch. Each demo account converts to a real signed
+artist by setting `artists.owner_id` and clearing `is_demo`; nothing else in
+the schema changes.
+
+Trivia is generated from each artist's canon (debut tape, breakout single,
+producer, crew, ad-lib, venue), and wrong answers are drawn from *other*
+artists' canon — so every distractor is plausible rather than obviously filler.
+
+## Status
+
+**Built and working:** fan signup and auth, artist discovery, all six minigames
+with server-side grading, the XP economy with a full append-only audit ledger,
+levels and ranks, the rank-gated reward shelf with stock and subscriber gating,
+the Vault, rank-weighted monthly draws, trial subscriptions, Stripe checkout
+and webhooks, and the revenue-split engine.
+
+**Next:** the artist console still runs on mock data (`data/mockData.ts`) — it
+needs wiring to the same tables so artists can author their own trivia, set the
+rank gates on their shelf and fulfil claims. Social publishing is scaffolded but
+needs platform credentials; see [docs/SOCIAL-SETUP.md](docs/SOCIAL-SETUP.md).
+
+---
+
+Developed by **GoKoncentrate**.
